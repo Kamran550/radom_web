@@ -6,11 +6,11 @@ export function OrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "@id": "https://radomuniversity.pl/#organization",
-    name: "Balkan Science and Management University",
+    name: "Radom İnternational University",
     alternateName: [
       "RADOM",
       "Балканский Университет Науки и Управления",
-      "Balkan Science and Management University",
+      "Radom İnternational University",
     ],
     url: "https://radomuniversity.pl",
     logo: {
@@ -21,7 +21,7 @@ export function OrganizationJsonLd() {
     },
     image: "https://radomuniversity.pl/images/RADOM-logo-dark.png",
     description:
-      "Balkan Science and Management University (RADOM) - International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
+      "Radom İnternational University (RADOM) - International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
     address: {
       "@type": "PostalAddress",
       addressCountry: "RS",
@@ -54,7 +54,7 @@ export function UniversityJsonLd() {
   const universityData = {
     "@context": "https://schema.org",
     "@type": "CollegeOrUniversity",
-    name: "Balkan Science and Management University",
+    name: "Radom İnternational University",
     alternateName: "RADOM",
     url: "https://radomuniversity.pl",
     logo: "https://radomuniversity.pl/images/RADOM-logo-dark.png",
@@ -103,9 +103,9 @@ export function WebsiteJsonLd() {
     "@type": "WebSite",
     "@id": "https://radomuniversity.pl/#website",
     url: "https://radomuniversity.pl",
-    name: "RADOM - Balkan Science and Management University",
-    alternateName: ["RADOM", "Balkan Science and Management University"],
-    description: "Official website of Balkan Science and Management University",
+    name: "RADOM - Radom İnternational University",
+    alternateName: ["RADOM", "Radom İnternational University"],
+    description: "Official website of Radom İnternational University",
     publisher: {
       "@id": "https://radomuniversity.pl/#organization",
     },

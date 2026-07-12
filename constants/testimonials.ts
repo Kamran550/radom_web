@@ -4,7 +4,7 @@ export const testimonials = [
     name: "Aysel Mammadova",
     program: "Bachelor of Computer Science",
     image: "/images/RADOM-logo-dark.png", // Temporary, sonra real student photos əlavə ediləcək
-    text: "Müəllimlərin dəstəyi və praktiki dərslər sayəsində iş tapa bildim. Balkan Bilim ve Yönetim Üniversitesi-da təhsil almaq ən yaxşı qərarım idi.",
+    text: "Müəllimlərin dəstəyi və praktiki dərslər sayəsində iş tapa bildim. Radom Uluslararası Üniversitesin-de təhsil almaq ən yaxşı qərarım idi.",
   },
   {
     id: 2,

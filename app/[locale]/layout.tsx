@@ -15,14 +15,14 @@ const seoData: Record<
   { title: string; description: string; keywords: string[] }
 > = {
   en: {
-    title: "RADOM - Balkan Science and Management University | Study in Serbia",
+    title: "RADOM - Radom İnternational University | Study in Poland",
     description:
-      "RADOM - Balkan Science and Management University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
+      "RADOM - Radom İnternational University. International education in Poland with bachelor's, master's and PhD programs. Quality education through science and management.",
     keywords: [
       "RADOM",
       "radom",
       "radomuniversity.pl",
-      "Balkan Science and Management University",
+      "Radom İnternational University",
       "study in Serbia",
       "international university",
       "Serbia education",
@@ -58,14 +58,14 @@ const seoData: Record<
     ],
   },
   tr: {
-    title: "RADOM - Balkan Bilim ve Yönetim Üniversitesi | Sırbistan'da Eğitim",
+    title: "RADOM - Radom Uluslararası Üniversitesi | Sırbistan'da Eğitim",
     description:
-      "RADOM - Balkan Bilim ve Yönetim Üniversitesi. Sırbistan'da lisans, yüksek lisans ve doktora programları ile uluslararası eğitim. Bilim ve yönetim yoluyla kaliteli eğitim.",
+      "RADOM - Radom Uluslararası Üniversitesi. Sırbistan'da lisans, yüksek lisans ve doktora programları ile uluslararası eğitim. Bilim ve yönetim yoluyla kaliteli eğitim.",
     keywords: [
       "RADOM",
       "radom",
       "radomuniversity.pl",
-      "Balkan Bilim ve Yönetim Üniversitesi",
+      "Radom Uluslararası Üniversitesi",
       "Sırbistan'da eğitim",
       "Sırbistan'da okumak",
       "uluslararası üniversite",
@@ -98,12 +98,12 @@ export async function generateMetadata({
     keywords: seo.keywords,
     authors: [
       {
-        name: "Balkan Science and Management University",
+        name: "Radom İnternational University",
         url: baseUrl,
       },
     ],
-    creator: "Balkan Science and Management University",
-    publisher: "Balkan Science and Management University",
+    creator: "Radom İnternational University",
+    publisher: "Radom İnternational University",
     robots: {
       index: true,
       follow: true,
@@ -151,7 +151,7 @@ export async function generateMetadata({
       locale: ogLocale,
       alternateLocale: alternateLocales,
       url: `${baseUrl}/${locale}`,
-      siteName: "Balkan Science and Management University",
+      siteName: "Radom İnternational University",
       title: seo.title,
       description: seo.description,
       images: [
@@ -159,7 +159,7 @@ export async function generateMetadata({
           url: "/images/RADOM-logo-dark.png",
           width: 1200,
           height: 630,
-          alt: "Balkan Science and Management University Logo",
+          alt: "Radom İnternational University Logo",
         },
       ],
     },

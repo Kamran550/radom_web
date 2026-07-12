@@ -16,18 +16,18 @@ export const metadata: Metadata = {
   // Əsas məlumatlar
   title: {
     default:
-      "RADOM - Balkan Science and Management University | Study in Serbia",
-    template: "%s | RADOM - Balkan Science and Management University",
+      "RADOM - Radom İnternational University | Study in Serbia",
+    template: "%s | RADOM - Radom İnternational University",
   },
   description:
-    "RADOM - Balkan Science and Management University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
+    "RADOM - Radom İnternational University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
 
   // Açar sözlər
   keywords: [
     "RADOM",
     "radom",
     "radomuniversity.pl",
-    "Balkan Science and Management University",
+    "Radom İnternational University",
     "Serbia university",
     "Serbian university",
     "international university Serbia",
@@ -50,12 +50,12 @@ export const metadata: Metadata = {
   // Müəllif və yaradıcı
   authors: [
     {
-      name: "Balkan Science and Management University",
+      name: "Radom İnternational University",
       url: "https://radomuniversity.pl",
     },
   ],
-  creator: "Balkan Science and Management University",
-  publisher: "Balkan Science and Management University",
+  creator: "Radom İnternational University",
+  publisher: "Radom İnternational University",
 
   // Robots
   robots: {
@@ -87,16 +87,16 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: ["ru_RU", "tr_TR"],
     url: "https://radomuniversity.pl",
-    siteName: "Balkan Science and Management University",
-    title: "Balkan Science and Management University | Study in Serbia",
+    siteName: "Radom İnternational University",
+    title: "Radom İnternational University | Study in Serbia",
     description:
-      "Balkan Science and Management University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
+      "Radom İnternational University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
     images: [
       {
         url: "/images/RADOM-logo-dark.png",
         width: 1200,
         height: 630,
-        alt: "Balkan Science and Management University Logo",
+        alt: "Radom İnternational University Logo",
       },
     ],
   },
@@ -104,9 +104,9 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "Balkan Science and Management University",
+    title: "Radom İnternational University",
     description:
-      "Balkan Science and Management University. International education in Serbia with bachelor's, master's and PhD programs.",
+      "Radom İnternational University. International education in Serbia with bachelor's, master's and PhD programs.",
     images: ["/images/RADOM-logo-dark.png"],
     creator: "@radom_edu",
     site: "@radom_edu",

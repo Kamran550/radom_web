@@ -35,9 +35,9 @@ export const news: NewsItem[] = [
     category: "university",
     date: "2024-12-15",
     excerpt:
-      "Balkan Science and Management University proudly welcomes over 150 new international students from 30 different countries this academic year.",
+      "Radom İnternational University proudly welcomes over 150 new international students from 30 different countries this academic year.",
     content: `
-      <p>Balkan Science and Management University (RADOM) is thrilled to announce the arrival of over 150 new international students from 30 different countries, marking one of the most diverse cohorts in our university's history.</p>
+      <p>Radom İnternational University (RADOM) is thrilled to announce the arrival of over 150 new international students from 30 different countries, marking one of the most diverse cohorts in our university's history.</p>
       
       <h2>A Global Community</h2>
       <p>This year's international students represent a wide range of cultures, bringing unique perspectives and experiences to our campus community. The incoming students come from countries across Europe, Asia, Africa, and the Americas, further enriching our global educational environment.</p>
