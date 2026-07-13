@@ -15,11 +15,11 @@ const seoData: Record<
   { title: string; description: string; keywords: string[] }
 > = {
   en: {
-    title: "RADOM - Radom İnternational University | Study in Poland",
+    title: "RIU - Radom İnternational University | Study in Poland",
     description:
-      "RADOM - Radom İnternational University. International education in Poland with bachelor's, master's and PhD programs. Quality education through science and management.",
+      "RIU - Radom İnternational University. International education in Poland with bachelor's, master's and PhD programs. Quality education through science and management.",
     keywords: [
-      "RADOM",
+      "RIU",
       "radom",
       "radomuniversity.pl",
       "Radom İnternational University",
@@ -32,7 +32,7 @@ const seoData: Record<
       "Serbian university",
       "science and management",
       "Belgrade university",
-      "European university",
+      "Radom university",
     ],
   },
   ru: {
@@ -58,11 +58,11 @@ const seoData: Record<
     ],
   },
   tr: {
-    title: "RADOM - Radom Uluslararası Üniversitesi | Sırbistan'da Eğitim",
+    title: "RIU - Radom Uluslararası Üniversitesi | Sırbistan'da Eğitim",
     description:
-      "RADOM - Radom Uluslararası Üniversitesi. Sırbistan'da lisans, yüksek lisans ve doktora programları ile uluslararası eğitim. Bilim ve yönetim yoluyla kaliteli eğitim.",
+      "RIU - Radom Uluslararası Üniversitesi. Sırbistan'da lisans, yüksek lisans ve doktora programları ile uluslararası eğitim. Bilim ve yönetim yoluyla kaliteli eğitim.",
     keywords: [
-      "RADOM",
+      "RIU",
       "radom",
       "radomuniversity.pl",
       "Radom Uluslararası Üniversitesi",

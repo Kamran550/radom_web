@@ -8,7 +8,7 @@ export function OrganizationJsonLd() {
     "@id": "https://radomuniversity.pl/#organization",
     name: "Radom İnternational University",
     alternateName: [
-      "RADOM",
+      "RIU",
       "Балканский Университет Науки и Управления",
       "Radom İnternational University",
     ],
@@ -55,7 +55,7 @@ export function UniversityJsonLd() {
     "@context": "https://schema.org",
     "@type": "CollegeOrUniversity",
     name: "Radom İnternational University",
-    alternateName: "RADOM",
+    alternateName: "RIU",
     url: "https://radomuniversity.pl",
     logo: "https://radomuniversity.pl/images/RADOM-logo-dark.png",
     description:

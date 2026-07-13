@@ -16,15 +16,15 @@ export const metadata: Metadata = {
   // Əsas məlumatlar
   title: {
     default:
-      "RADOM - Radom İnternational University | Study in Serbia",
-    template: "%s | RADOM - Radom İnternational University",
+      "RIU - Radom İnternational University | Study in Serbia",
+    template: "%s | RIU - Radom İnternational University",
   },
   description:
-    "RADOM - Radom İnternational University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
+    "RIU - Radom İnternational University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
 
   // Açar sözlər
   keywords: [
-    "RADOM",
+    "RIU",
     "radom",
     "radomuniversity.pl",
     "Radom İnternational University",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "master programs in Serbia",
     "doctoral programs in Serbia",
     "Belgrade university",
-    "European university",
+    "Radom university",
     "Serbia education",
   ],
 

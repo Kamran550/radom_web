@@ -37,7 +37,7 @@ export const news: NewsItem[] = [
     excerpt:
       "Radom İnternational University proudly welcomes over 150 new international students from 30 different countries this academic year.",
     content: `
-      <p>Radom İnternational University (RADOM) is thrilled to announce the arrival of over 150 new international students from 30 different countries, marking one of the most diverse cohorts in our university's history.</p>
+      <p>Radom İnternational University (RIU) is thrilled to announce the arrival of over 150 new international students from 30 different countries, marking one of the most diverse cohorts in our university's history.</p>
       
       <h2>A Global Community</h2>
       <p>This year's international students represent a wide range of cultures, bringing unique perspectives and experiences to our campus community. The incoming students come from countries across Europe, Asia, Africa, and the Americas, further enriching our global educational environment.</p>
@@ -144,7 +144,7 @@ export const news: NewsItem[] = [
     category: "university",
     date: "2024-11-25",
     excerpt:
-      "RADOM signs partnership agreements with leading Serbian universities to enhance student exchange programs.",
+      "RIU signs partnership agreements with leading Serbian universities to enhance student exchange programs.",
     content: `
       <p>We're excited to announce new partnership agreements with several leading Serbian universities, expanding our student exchange program opportunities.</p>
       
@@ -162,7 +162,7 @@ export const news: NewsItem[] = [
     category: "academic",
     date: "2024-11-20",
     excerpt:
-      "RADOM launches a new online learning platform providing enhanced digital learning experiences for students.",
+      "RIU launches a new online learning platform providing enhanced digital learning experiences for students.",
     content: `
       <p>We're proud to announce the launch of our new online learning platform, designed to provide an enhanced digital learning experience for all students.</p>
       
@@ -199,7 +199,7 @@ export const news: NewsItem[] = [
     category: "university",
     date: "2024-11-10",
     excerpt:
-      "RADOM announces new sustainability initiatives as part of our commitment to environmental responsibility.",
+      "RIU announces new sustainability initiatives as part of our commitment to environmental responsibility.",
     content: `
       <p>As part of our commitment to environmental responsibility, we're launching several new sustainability initiatives on campus.</p>
       
