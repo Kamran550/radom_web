@@ -27,7 +27,8 @@
     "programs": "Programlar",
     "news": "Haberler",
     "contact": "İletişim",
-    "apply": "Başvur"
+    "apply": "Başvur",
+    "admissionsOpen": "Kabul 2026/27: Açık"
   },
   "hero": {
     "title": "Bilim ve Yönetimde Mükemmellikle Geleceğinizi Dönüştürün",
@@ -53,7 +54,12 @@
     "description": "Radom Uluslararası Üniversitesi, titiz bilimsel eğitimi yenilikçi yönetim uygulamalarıyla birleştiren akademik mükemmelliğin bir simgesi olarak duruyor. Kurumumuz, öğrencileri küresel zorluklarla başa çıkmaya hazır ileri görüşlü profesyoneller olmalarını sağlıyor.",
     "button": "Daha Fazla Keşfet",
     "badge": "Akademik Mükemmellik",
-    "yearsExperience": "25+ Yıllık Deneyim"
+    "yearsExperience": "25+ Yıllık Deneyim",
+    "checkpoints": {
+      "academicStandard": "Uluslararası geçerliliğe sahip akademik standartlar",
+      "globalNetwork": "Küresel iş birliği ağı ve partner kurumlar",
+      "studentSupport": "Eğitim süreciniz boyunca kapsamlı öğrenci desteği"
+    }
   },
   "statistics": {
     "title": "RADOM Rakamlarla",
@@ -623,7 +629,14 @@
     }
   },
   "footer": {
-    "description": "Radom Uluslararası Üniversitesi - Eğitim, barış ve kültürü birleştiren uluslararası bir üniversite.",
+    "description": "Radom Uluslararası Üniversitesi — Bilim ve yönetim eğitiminde mükemmelliği birleştiren uluslararası bir üniversite.",
+    "eyebrow": "Kabul 2026/27: Açık",
+    "headline": "Bilim ve yönetim eğitiminde mükemmelliği bir araya getiriyoruz.",
+    "applyNow": "Başvur",
+    "brandName": "Radom Uluslararası Üniversitesi",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "address": "Adres",
     "quickLinks": "Hızlı Bağlantılar",
     "contact": "İletişim",
     "university": "Üniversite",
@@ -640,6 +653,19 @@
       "contact": "İletişim",
       "apply": "Başvur",
       "eLibrary": "E-Kütüphane"
+    },
+    "indexTags": {
+      "about": "Hikayemiz ve yönetim",
+      "programs": "Dereceler ve fakülteler",
+      "fees": "Ücretler ve burslar",
+      "contact": "Bizimle iletişime geçin",
+      "apply": "Başvurunuzu başlatın",
+      "eLibrary": "Dijital kaynaklar"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
     },
     "universityLinks": {
       "academicPrograms": "Akademik Programlar",

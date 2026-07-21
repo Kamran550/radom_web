@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";

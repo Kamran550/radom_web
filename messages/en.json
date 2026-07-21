@@ -27,7 +27,8 @@
     "programs": "Programs",
     "news": "News",
     "contact": "Contact",
-    "apply": "Apply"
+    "apply": "Apply",
+    "admissionsOpen": "Admissions 2026/27: Open"
   },
   "hero": {
     "title": "Transform Your Future with Excellence in Science and Management",
@@ -53,7 +54,12 @@
     "description": "Radom İnternational University stands as a beacon of academic excellence, combining rigorous scientific education with innovative management practices. Our institution empowers students to become forward-thinking professionals ready to tackle global challenges.",
     "button": "Explore More",
     "badge": "Academic Excellence",
-    "yearsExperience": "25+ Years of Experience"
+    "yearsExperience": "25+ Years of Experience",
+    "checkpoints": {
+      "academicStandard": "Internationally recognized academic standards",
+      "globalNetwork": "Global network of partner institutions",
+      "studentSupport": "Dedicated student support throughout your journey"
+    }
   },
   "statistics": {
     "title": "RADOM by the Numbers",
@@ -623,12 +629,19 @@
     }
   },
   "footer": {
-    "description": "Radom İnternational University - An international university combining excellence in science and management education.",
+    "description": "Radom İnternational University — An international university combining excellence in science and management education.",
+    "eyebrow": "Admissions 2026/27: Open",
+    "headline": "Combining excellence in science and management education.",
+    "applyNow": "Apply Now",
+    "brandName": "Radom International University",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
     "quickLinks": "Quick Links",
     "contact": "Contact",
     "university": "University",
     "phoneNumbers": {
-      "belgium": "Belgium", 
+      "belgium": "Belgium",
       "turkey": "Türkiye",
       "global": "Global"
     },
@@ -640,6 +653,19 @@
       "contact": "Contact",
       "apply": "Apply",
       "eLibrary": "E-Library"
+    },
+    "indexTags": {
+      "about": "Our story & leadership",
+      "programs": "Degrees & faculties",
+      "fees": "Tuition & scholarships",
+      "contact": "Get in touch",
+      "apply": "Start your application",
+      "eLibrary": "Digital resources"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
     },
     "universityLinks": {
       "academicPrograms": "Academic Programs",

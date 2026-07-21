@@ -21,11 +21,11 @@ export function OrganizationJsonLd() {
     },
     image: "https://radomuniversity.pl/images/RADOM-logo-dark.png",
     description:
-      "Radom İnternational University (RADOM) - International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
+      "Radom İnternational University (RADOM) - International education in Poland with bachelor's, master's and PhD programs. Quality education through science and management.",
     address: {
       "@type": "PostalAddress",
       addressCountry: "RS",
-      addressLocality: "Serbia",
+      addressLocality: "Poland",
     },
     sameAs: [
       "https://www.facebook.com/radom",
@@ -59,10 +59,10 @@ export function UniversityJsonLd() {
     url: "https://radomuniversity.pl",
     logo: "https://radomuniversity.pl/images/RADOM-logo-dark.png",
     description:
-      "RADOM offers international bachelor's, master's and PhD programs in Serbia. Fostering science and management through education and global understanding.",
+      "RADOM offers international bachelor's, master's and PhD programs in Poland. Fostering science and management through education and global understanding.",
     address: {
       "@type": "PostalAddress",
-      addressCountry: "Serbia",
+      addressCountry: "Poland",
     },
     hasOfferingCatalog: {
       "@type": "OfferingCatalog",

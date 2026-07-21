@@ -1,14 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 
 const contactInfo = {
   phone: {
     primary: "+32 483 38 31 70",
-    secondary: "+32 483 38 31 70",
+    secondary: "+90 505 621 26 26",
     hours: "Mon-Fri: 9:00 AM - 6:00 PM",
   },
   email: {
@@ -17,9 +15,8 @@ const contactInfo = {
     support: "rectorate@radomuniversity.pl",
   },
   address: {
-    city: "Jurija Gagarina 12, 11070, Beograd, Serbia",
-    zip: "00-000",
-    country: "Serbia",
+    city: "Jurija Gagarina 12, 11070, Beograd, Radom",
+    country: "Radom",
   },
   hours: {
     weekdays: "Monday - Friday: 9:00 AM - 6:00 PM",
@@ -28,178 +25,106 @@ const contactInfo = {
   },
 };
 
+const cards = [
+  {
+    icon: Phone,
+    labelKey: "phone" as const,
+    content: (
+      <div className="space-y-1.5">
+        <a
+          href={`tel:${contactInfo.phone.primary.replace(/\s/g, "")}`}
+          className="block text-[#059669] font-semibold hover:text-[#047857] transition-colors"
+        >
+          {contactInfo.phone.primary}
+        </a>
+        <a
+          href={`tel:${contactInfo.phone.secondary.replace(/\s/g, "")}`}
+          className="block text-slate-600 text-sm hover:text-[#059669] transition-colors"
+        >
+          {contactInfo.phone.secondary}
+        </a>
+        <p className="text-xs text-slate-400 pt-1">{contactInfo.phone.hours}</p>
+      </div>
+    ),
+  },
+  {
+    icon: Mail,
+    labelKey: "email" as const,
+    content: (
+      <div className="space-y-2">
+        <a
+          href={`mailto:${contactInfo.email.primary}`}
+          className="block text-[#059669] font-semibold hover:text-[#047857] transition-colors text-sm break-all"
+        >
+          {contactInfo.email.primary}
+        </a>
+        <a
+          href={`mailto:${contactInfo.email.admissions}`}
+          className="block text-slate-600 text-xs hover:text-[#059669] transition-colors break-all"
+        >
+          {contactInfo.email.admissions}
+        </a>
+        <a
+          href={`mailto:${contactInfo.email.support}`}
+          className="block text-slate-600 text-xs hover:text-[#059669] transition-colors break-all"
+        >
+          {contactInfo.email.support}
+        </a>
+      </div>
+    ),
+  },
+  {
+    icon: MapPin,
+    labelKey: "address" as const,
+    content: (
+      <div className="text-slate-600 text-sm space-y-1">
+        <p>{contactInfo.address.city}</p>
+        <p className="font-semibold text-[#0F172A]">{contactInfo.address.country}</p>
+      </div>
+    ),
+  },
+];
+
 export default function ContactInfo() {
   const t = useTranslations("contact.info");
 
   return (
-    <section className="py-20 bg-linear-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
+    <section className="section-padding bg-[#F8F7F4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-800 dark:text-slate-100">
-            {t("title")}
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
-        </motion.div>
-
-        {/* Contact Cards Grid - 3 Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {/* Phone */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <Card className="h-full shadow-lg hover:shadow-xl transition-shadow border-2 border-slate-200 dark:border-slate-800 hover:border-orange-500 dark:hover:border-orange-600">
-              <CardContent className="pt-6">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900/50 dark:to-amber-900/50 flex items-center justify-center mb-4">
-                    <Phone className="w-8 h-8 text-orange-600 dark:text-orange-400" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-                    {t("phone")}
-                  </h3>
-                  <div className="space-y-2">
-                    <a
-                      href={`tel:${contactInfo.phone.primary.replace(
-                        /\s/g,
-                        ""
-                      )}`}
-                      className="block text-lg font-semibold text-orange-600 dark:text-orange-400 hover:underline"
-                    >
-                      {contactInfo.phone.primary}
-                    </a>
-                    <a
-                      href={`tel:${contactInfo.phone.secondary.replace(
-                        /\s/g,
-                        ""
-                      )}`}
-                      className="block text-sm text-gray-600 dark:text-gray-300 hover:underline"
-                    >
-                      {contactInfo.phone.secondary}
-                    </a>
-                    <div className="flex items-center justify-center gap-2 mt-4 pt-4 border-t">
-                      <Clock className="w-4 h-4 text-muted-foreground" />
-                      <p className="text-xs text-muted-foreground">
-                        {contactInfo.phone.hours}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Email */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <Card className="h-full shadow-lg hover:shadow-xl transition-shadow border-2 border-slate-200 dark:border-slate-800 hover:border-orange-500 dark:hover:border-orange-600">
-              <CardContent className="pt-6">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900 dark:to-amber-900 flex items-center justify-center mb-4">
-                    <Mail className="w-8 h-8 text-orange-600 dark:text-orange-400" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-                    {t("email")}
-                  </h3>
-                  <div className="space-y-3">
-                    <a
-                      href={`mailto:${contactInfo.email.primary}`}
-                      className="block text-sm font-semibold text-orange-600 dark:text-orange-400 hover:underline break-all"
-                    >
-                      {contactInfo.email.primary}
-                    </a>
-                    <div className="space-y-1 pt-2 border-t">
-                      <p className="text-xs text-muted-foreground mb-1">
-                        {t("admissions")}
-                      </p>
-                      <a
-                        href={`mailto:${contactInfo.email.admissions}`}
-                        className="block text-xs text-gray-600 dark:text-gray-300 hover:underline break-all"
-                      >
-                        {contactInfo.email.admissions}
-                      </a>
-                    </div>
-                    <div className="space-y-1 pt-2 border-t">
-                      <p className="text-xs text-muted-foreground mb-1">
-                        {t("support")}
-                      </p>
-                      <a
-                        href={`mailto:${contactInfo.email.support}`}
-                        className="block text-xs text-gray-600 dark:text-gray-300 hover:underline break-all"
-                      >
-                        {contactInfo.email.support}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Address */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <Card className="h-full shadow-lg hover:shadow-xl transition-shadow border-2 border-slate-200 dark:border-slate-800 hover:border-orange-500 dark:hover:border-orange-600">
-              <CardContent className="pt-6">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900 dark:to-orange-900 flex items-center justify-center mb-4">
-                    <MapPin className="w-8 h-8 text-orange-600 dark:text-orange-400" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-                    {t("address")}
-                  </h3>
-                  <div className="space-y-1 text-gray-600 dark:text-gray-300">
-                    <p>{contactInfo.address.city}</p>
-                    <p className="text-sm">{contactInfo.address.zip}</p>
-                    <p className="text-sm font-semibold mt-2">
-                      {contactInfo.address.country}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="section-label">{t("subtitle")}</span>
+          <h2 className="heading-xl">{t("title")}</h2>
         </div>
 
-        {/* Office Hours */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="mt-12 text-center"
-        >
-          <Card className="max-w-2xl mx-auto">
-            <CardContent className="pt-6">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Clock className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-                <h3 className="text-xl font-bold">{t("officeHours")}</h3>
+        {/* Contact cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {cards.map(({ icon: Icon, labelKey, content }) => (
+            <div
+              key={labelKey}
+              className="bg-white rounded-xl border border-slate-200 p-6 card-hover"
+            >
+              <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center mb-4">
+                <Icon className="w-5 h-5 text-[#059669]" />
               </div>
-              <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                <p>{t("hours.saturday")}</p>
-                <p className="text-muted-foreground">{t("hours.sunday")}</p>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+              <h3 className="font-bold text-[#0F172A] mb-3">{t(labelKey)}</h3>
+              {content}
+            </div>
+          ))}
+        </div>
+
+        {/* Office hours strip */}
+        <div className="bg-[#0F172A] text-white rounded-xl p-6 flex flex-col md:flex-row items-center gap-4">
+          <Clock className="w-6 h-6 text-[#10B981] shrink-0" />
+          <div>
+            <h3 className="font-bold mb-1">{t("officeHours")}</h3>
+            <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-slate-400">
+              <span>{contactInfo.hours.weekdays}</span>
+              <span>{contactInfo.hours.saturday}</span>
+              <span>{contactInfo.hours.sunday}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

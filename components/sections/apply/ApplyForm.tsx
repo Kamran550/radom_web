@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Degree } from "@/lib/types/degree";
 import { Faculty } from "@/lib/types/faculty";
@@ -13,6 +12,7 @@ import FacultySelector, { TeachingLanguage } from "./FacultySelector";
 import StudentApplicationForm from "./StudentApplicationForm";
 import AgencyApplicationForm from "./AgencyApplicationForm";
 import TransferApplicationForm from "./TransferApplicationForm";
+import { cn } from "@/lib/utils";
 
 type ApplicantType = "student" | "agency" | "transfer";
 type Step = "type" | "degree" | "faculty" | "form";
@@ -20,19 +20,23 @@ type Step = "type" | "degree" | "faculty" | "form";
 const STORAGE_KEY = "apply_form_state";
 const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes
 
+const STEPS: { id: Step; label: string }[] = [
+  { id: "type", label: "Type" },
+  { id: "degree", label: "Degree" },
+  { id: "faculty", label: "Faculty" },
+  { id: "form", label: "Application" },
+];
+
 export default function ApplyForm() {
   const t = useTranslations("apply");
   const [currentStep, setCurrentStep] = useState<Step>("type");
-  const [applicantType, setApplicantType] = useState<ApplicantType | null>(
-    null
-  );
+  const [applicantType, setApplicantType] = useState<ApplicantType | null>(null);
   const [selectedDegree, setSelectedDegree] = useState<Degree | null>(null);
   const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
-  const [selectedLanguage, setSelectedLanguage] =
-    useState<TeachingLanguage | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState<TeachingLanguage | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load state from sessionStorage on mount (only within same tab session)
+  // Load state from sessionStorage on mount
   useEffect(() => {
     try {
       const saved = sessionStorage.getItem(STORAGE_KEY);
@@ -46,7 +50,6 @@ export default function ApplyForm() {
           timestamp,
         } = JSON.parse(saved);
 
-        // Check if session is still valid (within 30 minutes)
         const isExpired = timestamp && Date.now() - timestamp > SESSION_TIMEOUT;
 
         if (!isExpired) {
@@ -56,7 +59,6 @@ export default function ApplyForm() {
           if (savedFaculty) setSelectedFaculty(savedFaculty);
           if (savedLanguage) setSelectedLanguage(savedLanguage);
         } else {
-          // Clear expired session
           sessionStorage.removeItem(STORAGE_KEY);
         }
       }
@@ -86,14 +88,7 @@ export default function ApplyForm() {
         console.error("Error saving apply form state:", error);
       }
     }
-  }, [
-    currentStep,
-    applicantType,
-    selectedDegree,
-    selectedFaculty,
-    selectedLanguage,
-    isLoaded,
-  ]);
+  }, [currentStep, applicantType, selectedDegree, selectedFaculty, selectedLanguage, isLoaded]);
 
   const handleApplicantTypeSelect = (type: ApplicantType) => {
     setApplicantType(type);
@@ -101,12 +96,12 @@ export default function ApplyForm() {
 
   const handleDegreeSelect = (degree: Degree) => {
     setSelectedDegree(degree);
-    setSelectedFaculty(null); // Reset faculty when degree changes
+    setSelectedFaculty(null);
   };
 
   const handleFacultySelect = (faculty: Faculty) => {
     setSelectedFaculty(faculty);
-    setSelectedLanguage(null); // Reset language when faculty changes
+    setSelectedLanguage(null);
   };
 
   const handleLanguageSelect = (language: TeachingLanguage) => {
@@ -124,65 +119,43 @@ export default function ApplyForm() {
   };
 
   const handleBack = () => {
-    if (currentStep === "degree") {
-      setCurrentStep("type");
-    } else if (currentStep === "faculty") {
-      setCurrentStep("degree");
-    } else if (currentStep === "form") {
-      setCurrentStep("faculty");
-    }
+    if (currentStep === "degree") setCurrentStep("type");
+    else if (currentStep === "faculty") setCurrentStep("degree");
+    else if (currentStep === "form") setCurrentStep("faculty");
   };
 
   const canProceed = () => {
     if (currentStep === "type") return applicantType !== null;
     if (currentStep === "degree") return selectedDegree !== null;
-    if (currentStep === "faculty")
-      return selectedFaculty !== null && selectedLanguage !== null;
+    if (currentStep === "faculty") return selectedFaculty !== null && selectedLanguage !== null;
     return false;
   };
 
-  // Get step index
   const getStepIndex = (step: Step): number => {
     const steps: Step[] = ["type", "degree", "faculty", "form"];
     return steps.indexOf(step);
   };
 
-  // Check if step is completed
   const isStepCompleted = (step: Step): boolean => {
     if (step === "type") return applicantType !== null;
     if (step === "degree") return selectedDegree !== null;
-    if (step === "faculty")
-      return selectedFaculty !== null && selectedLanguage !== null;
-    if (step === "form") return false; // Form step is never "completed" in the traditional sense
+    if (step === "faculty") return selectedFaculty !== null && selectedLanguage !== null;
     return false;
   };
 
-  // Check if step is accessible
   const isStepAccessible = (step: Step): boolean => {
     const stepIndex = getStepIndex(step);
     const currentIndex = getStepIndex(currentStep);
-
-    // Can always go back to previous steps
     if (stepIndex < currentIndex) return true;
-
-    // Can stay on current step
     if (stepIndex === currentIndex) return true;
-
-    // Can go forward only if current step is completed
     if (stepIndex === currentIndex + 1) return isStepCompleted(currentStep);
-
-    // Can't skip steps
     return false;
   };
 
-  // Handle step click
   const handleStepClick = (step: Step) => {
-    if (isStepAccessible(step)) {
-      setCurrentStep(step);
-    }
+    if (isStepAccessible(step)) setCurrentStep(step);
   };
 
-  // Clear state (called on successful submission)
   const clearState = () => {
     setCurrentStep("type");
     setApplicantType(null);
@@ -192,61 +165,79 @@ export default function ApplyForm() {
     sessionStorage.removeItem(STORAGE_KEY);
   };
 
-  // Don't render until state is loaded from localStorage
-  if (!isLoaded) {
-    return null;
-  }
+  if (!isLoaded) return null;
+
+  const currentStepIndex = getStepIndex(currentStep);
 
   return (
     <div className="max-w-6xl mx-auto">
+
       {/* Step Indicator */}
-      <div className="flex items-center justify-center mb-8">
-        <div className="flex items-center space-x-4">
-          {(["type", "degree", "faculty", "form"] as Step[]).map(
-            (step, index) => (
-              <div key={step} className="flex items-center">
+      <div className="mb-10">
+        <div className="flex items-center justify-center">
+          {STEPS.map((step, index) => {
+            const isActive = currentStep === step.id;
+            const isCompleted = isStepCompleted(step.id) && currentStepIndex > index;
+            const isAccessible = isStepAccessible(step.id);
+
+            return (
+              <div key={step.id} className="flex items-center">
+                {/* Step circle */}
                 <button
-                  onClick={() => handleStepClick(step)}
-                  disabled={!isStepAccessible(step)}
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
-                    currentStep === step
-                      ? "bg-primary text-primary-foreground"
-                      : getStepIndex(currentStep) > index
-                      ? "bg-green-500 text-white hover:bg-green-600 cursor-pointer"
-                      : "bg-gray-200 text-gray-500"
-                  } ${
-                    isStepAccessible(step) && currentStep !== step
-                      ? "hover:scale-110 cursor-pointer"
-                      : !isStepAccessible(step)
-                      ? "cursor-not-allowed opacity-50"
-                      : ""
-                  }`}
+                  onClick={() => handleStepClick(step.id)}
+                  disabled={!isAccessible}
+                  className={cn(
+                    "relative flex flex-col items-center group",
+                    !isAccessible && "cursor-not-allowed opacity-40"
+                  )}
                 >
-                  {index + 1}
-                </button>
-                {index < 3 && (
                   <div
-                    className={`w-12 md:w-24 h-1 transition-colors ${
-                      getStepIndex(currentStep) > index
-                        ? "bg-green-500"
-                        : "bg-gray-200"
-                    }`}
+                    className={cn(
+                      "w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm border-2",
+                      isActive
+                        ? "bg-[#059669] text-white border-[#059669]"
+                        : isCompleted
+                        ? "bg-[#059669] text-white border-[#059669]"
+                        : "bg-white text-slate-400 border-slate-300"
+                    )}
+                  >
+                    {isCompleted ? (
+                      <CheckCircle className="w-5 h-5" />
+                    ) : (
+                      index + 1
+                    )}
+                  </div>
+                  <span
+                    className={cn(
+                      "mt-2 text-xs font-medium hidden sm:block",
+                      isActive
+                        ? "text-[#059669]"
+                        : isCompleted
+                        ? "text-[#059669]"
+                        : "text-slate-400"
+                    )}
+                  >
+                    {step.label}
+                  </span>
+                </button>
+
+                {/* Connector line */}
+                {index < STEPS.length - 1 && (
+                  <div
+                    className={cn(
+                      "w-16 md:w-28 h-0.5 mx-2",
+                      currentStepIndex > index ? "bg-[#059669]" : "bg-slate-200"
+                    )}
                   />
                 )}
               </div>
-            )
-          )}
+            );
+          })}
         </div>
       </div>
 
       {/* Step Content */}
-      <motion.div
-        key={currentStep}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -20 }}
-        transition={{ duration: 0.3 }}
-      >
+      <div>
         {currentStep === "type" && (
           <ApplicantTypeSelector
             selectedType={applicantType}
@@ -296,6 +287,7 @@ export default function ApplyForm() {
               onSubmitSuccess={clearState}
             />
           )}
+
         {currentStep === "form" &&
           selectedFaculty &&
           applicantType === "transfer" && (
@@ -308,29 +300,29 @@ export default function ApplyForm() {
               onSubmitSuccess={clearState}
             />
           )}
-      </motion.div>
+      </div>
 
       {/* Navigation Buttons */}
       {currentStep !== "form" && (
-        <div className="flex justify-between mt-8">
+        <div className="flex justify-between mt-10 pt-6 border-t border-slate-200">
           <Button
             variant="outline"
             onClick={handleBack}
             disabled={currentStep === "type"}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 border-slate-300 text-slate-600 hover:border-[#059669] hover:text-[#059669] disabled:opacity-40"
           >
             <ArrowLeft className="w-4 h-4" />
             {t("navigation.back")}
           </Button>
 
-          <Button
+          <button
             onClick={handleNext}
             disabled={!canProceed()}
-            className="flex items-center gap-2"
+            className="btn-primary disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {t("navigation.continue")}
             <ArrowRight className="w-4 h-4" />
-          </Button>
+          </button>
         </div>
       )}
     </div>

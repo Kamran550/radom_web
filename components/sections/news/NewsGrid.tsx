@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,6 +17,7 @@ import {
 } from "lucide-react";
 import { news, newsCategories, NewsItem } from "@/constants/news";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -29,7 +28,6 @@ export default function NewsGrid() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Filter news based on category and search
   const filteredNews = useMemo(() => {
     return news.filter((item) => {
       const matchesCategory =
@@ -45,16 +43,13 @@ export default function NewsGrid() {
     });
   }, [selectedCategory, searchQuery]);
 
-  // Pagination
   const totalPages = Math.ceil(filteredNews.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const paginatedNews = filteredNews.slice(startIndex, endIndex);
 
-  // Featured news
   const featuredNews = news.filter((item) => item.featured).slice(0, 2);
 
-  // Reset to page 1 when filters change
   React.useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory, searchQuery]);
@@ -65,98 +60,79 @@ export default function NewsGrid() {
   };
 
   return (
-    <section className="py-20 bg-linear-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
+    <section className="section-padding bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Featured Section */}
         {featuredNews.length > 0 &&
           selectedCategory === "all" &&
           currentPage === 1 && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="mb-16"
-            >
-              <div className="flex items-center gap-2 mb-6">
-                <Star className="w-5 h-5 text-orange-500 fill-orange-500" />
-                <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-600 via-amber-600 to-orange-600 bg-clip-text text-transparent">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-8">
+                <span className="inline-block w-8 h-px bg-[#059669]" />
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#059669] flex items-center gap-2">
+                  <Star className="w-3.5 h-3.5 fill-[#059669]" />
                   {t("featuredNews")}
                 </h2>
               </div>
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+              <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                 {featuredNews.map((item, index) => (
                   <FeaturedNewsCard key={item.id} item={item} index={index} />
                 ))}
               </div>
-            </motion.div>
+              <div className="mt-12 border-t border-slate-200" />
+            </div>
           )}
 
-        {/* Title & Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-12"
-        >
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-slate-100">{t("allNews")}</h2>
-            <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-              {/* Search */}
-              <div className="relative w-full md:w-64">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder={t("searchPlaceholder")}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 w-full"
-                />
-              </div>
-
-              {/* Category Filter */}
-              <div className="flex flex-wrap gap-2 justify-center md:justify-end">
-                {newsCategories.map((category) => (
-                  <Button
-                    key={category.id}
-                    variant={
-                      selectedCategory === category.id ? "default" : "outline"
-                    }
-                    size="sm"
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={
-                      selectedCategory === category.id
-                        ? "bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white"
-                        : ""
-                    }
-                  >
-                    {tCategories(category.id)}
-                  </Button>
-                ))}
-              </div>
-            </div>
+        {/* Filters Row */}
+        <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between mb-10 pb-8 border-b border-slate-200">
+          {/* Category tabs */}
+          <div className="flex flex-wrap gap-2">
+            {newsCategories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={cn(
+                  "px-4 py-2 text-sm font-medium rounded-md border",
+                  selectedCategory === category.id
+                    ? "bg-[#059669] text-white border-[#059669]"
+                    : "text-slate-600 border-slate-300 hover:border-[#059669] hover:text-[#059669] bg-white"
+                )}
+              >
+                {tCategories(category.id)}
+              </button>
+            ))}
           </div>
 
-          {/* Results Count */}
-          {filteredNews.length > 0 && (
-            <div className="text-sm text-slate-600 dark:text-slate-400 mb-6">
-              {t("found")} {filteredNews.length}{" "}
-              {filteredNews.length === 1 ? t("article") : t("articles")}
-            </div>
-          )}
-        </motion.div>
+          {/* Search */}
+          <div className="relative w-full md:w-72">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Input
+              type="text"
+              placeholder={t("searchPlaceholder")}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9 border-slate-300 focus:border-[#059669] focus:ring-[#059669] text-sm"
+            />
+          </div>
+        </div>
+
+        {/* Results Count */}
+        {filteredNews.length > 0 && (
+          <p className="text-sm text-slate-500 mb-6">
+            {t("found")} <span className="font-semibold text-[#0F172A]">{filteredNews.length}</span>{" "}
+            {filteredNews.length === 1 ? t("article") : t("articles")}
+          </p>
+        )}
 
         {/* News Grid */}
         {paginatedNews.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
               {paginatedNews.map((item, index) => (
                 <NewsCard key={item.id} item={item} index={index} />
               ))}
             </div>
-
-            {/* Pagination */}
             {totalPages > 1 && (
               <Pagination
                 currentPage={currentPage}
@@ -166,178 +142,156 @@ export default function NewsGrid() {
             )}
           </>
         ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center py-16"
-          >
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
-              {t("noResults")}
-            </p>
+          <div className="text-center py-20">
+            <p className="text-lg text-slate-500 mb-4">{t("noResults")}</p>
             <Button
               variant="outline"
               onClick={() => {
                 setSelectedCategory("all");
                 setSearchQuery("");
               }}
+              className="border-[#059669] text-[#059669] hover:bg-[#059669] hover:text-white"
             >
               {t("clearFilters")}
             </Button>
-          </motion.div>
+          </div>
         )}
       </div>
     </section>
   );
 }
 
-function FeaturedNewsCard({ item, index }: { item: NewsItem; index: number }) {
+function FeaturedNewsCard({ item }: { item: NewsItem; index: number }) {
   const t = useTranslations("news.grid");
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      className="group"
-    >
-      <Link href={`/news/${item.slug}`}>
-        <Card className="h-full shadow-lg hover:shadow-xl transition-all border-2 border-orange-500/50 dark:border-orange-600/50 overflow-hidden cursor-pointer group-hover:border-orange-600 dark:group-hover:border-orange-500">
-          {item.image && (
-            <div className="relative w-full h-48 md:h-64 overflow-hidden">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute top-4 left-4">
-                <span className="bg-gradient-to-r from-orange-600 to-amber-600 dark:from-orange-700 dark:to-amber-700 text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
-                  <Star className="w-3 h-3 fill-white" />
-                  {t("featured")}
-                </span>
-              </div>
+    <Link href={`/news/${item.slug}`} className="group block">
+      <div className="border border-[#059669] rounded-xl overflow-hidden bg-white card-hover h-full flex flex-col">
+        {/* Featured banner */}
+        <div className="bg-[#059669] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 text-center flex items-center justify-center gap-1.5">
+          <Star className="w-3 h-3 fill-white" />
+          {t("featured")}
+        </div>
+
+        {item.image && (
+          <div className="relative w-full h-52 overflow-hidden shrink-0">
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+
+        <div className="p-6 flex flex-col flex-1">
+          {/* Meta */}
+          <div className="flex items-center gap-3 text-xs text-slate-500 mb-3 flex-wrap">
+            <span className="uppercase font-semibold px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-[11px]">
+              {item.category}
+            </span>
+            <div className="flex items-center gap-1">
+              <Calendar className="w-3 h-3" />
+              {new Date(item.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
             </div>
-          )}
-          <CardHeader>
-            <div className="flex items-center gap-4 text-xs text-slate-600 dark:text-slate-400 mb-2">
-              <span className="uppercase font-semibold px-2 py-1 bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 rounded">
-                {item.category}
-              </span>
+            {item.readTime && (
               <div className="flex items-center gap-1">
-                <Calendar className="w-3 h-3" />
-                {new Date(item.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                <Clock className="w-3 h-3" />
+                {item.readTime} {t("min")}
               </div>
-              {item.readTime && (
-                <div className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  {item.readTime} {t("min")}
-                </div>
-              )}
+            )}
+          </div>
+
+          <h3 className="text-lg font-bold text-[#0F172A] group-hover:text-[#059669] mb-2 line-clamp-2">
+            {item.title}
+          </h3>
+          <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-3 flex-1">
+            {item.excerpt}
+          </p>
+
+          <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <User className="w-3.5 h-3.5" />
+              <span>{item.author}</span>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-2">
-              {item.title}
-            </h3>
-          </CardHeader>
-          <CardContent>
-            <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-              {item.excerpt}
-            </p>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <User className="w-4 h-4" />
-                <span>{item.author}</span>
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="gap-2 group-hover:gap-3 transition-all"
-              >
-                {t("readMore")}
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </Link>
-    </motion.div>
+            <span className="flex items-center gap-1.5 text-xs font-semibold text-[#059669]">
+              {t("readMore")}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 }
 
-function NewsCard({ item, index }: { item: NewsItem; index: number }) {
+function NewsCard({ item }: { item: NewsItem; index: number }) {
   const t = useTranslations("news.grid");
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      className="group"
-    >
-      <Link href={`/news/${item.slug}`}>
-        <Card className="h-full flex flex-row lg:flex-col shadow-lg hover:shadow-xl transition-all overflow-hidden cursor-pointer group-hover:border-orange-500 dark:group-hover:border-orange-600 border border-slate-200 dark:border-slate-800">
-          {item.image && (
-            <div className="relative w-48 lg:w-full h-48 lg:h-48 overflow-hidden shrink-0">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              {item.featured && (
-                <div className="absolute -top-2 -right-2">
-                  <span className="bg-gradient-to-r from-orange-600 to-amber-600 dark:from-orange-700 dark:to-amber-700 text-white text-xs font-semibold px-2 py-1 rounded-full rotate-12 shadow-lg">
-                    {t("featured")}
-                  </span>
-                </div>
-              )}
-            </div>
-          )}
-          <div className="flex-1 flex flex-col">
-            <CardHeader className="flex-1 pb-3">
-              <div className="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-400 mb-2">
-                <span className="uppercase font-semibold px-2 py-1 bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 rounded">
-                  {item.category}
+    <Link href={`/news/${item.slug}`} className="group block">
+      <div className="border border-slate-200 rounded-xl overflow-hidden bg-white card-hover h-full flex flex-col">
+        {item.image && (
+          <div className="relative w-full h-44 overflow-hidden shrink-0">
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover"
+            />
+            {item.featured && (
+              <div className="absolute top-3 left-3">
+                <span className="bg-[#059669] text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full flex items-center gap-1">
+                  <Star className="w-2.5 h-2.5 fill-white" />
+                  {t("featured")}
                 </span>
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
-                  {new Date(item.date).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </div>
               </div>
-              <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-2">
-                {item.title}
-              </h3>
-              <p className="text-sm text-slate-700 dark:text-slate-300 line-clamp-3">
-                {item.excerpt}
-              </p>
-            </CardHeader>
-            <CardContent className="pt-3 border-t border-slate-200 dark:border-slate-800">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
-                  <User className="w-3 h-3" />
-                  <span>{item.author}</span>
-                </div>
-                {item.readTime && (
-                  <div className="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-400">
-                    <Clock className="w-3 h-3" />
-                    <span>
-                      {item.readTime} {t("min")}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </CardContent>
+            )}
           </div>
-        </Card>
-      </Link>
-    </motion.div>
+        )}
+
+        <div className="p-5 flex flex-col flex-1">
+          {/* Meta */}
+          <div className="flex items-center gap-3 text-xs text-slate-500 mb-2.5 flex-wrap">
+            <span className="uppercase font-semibold px-2.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-[11px]">
+              {item.category}
+            </span>
+            <div className="flex items-center gap-1">
+              <Calendar className="w-3 h-3" />
+              {new Date(item.date).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </div>
+          </div>
+
+          <h3 className="text-base font-bold text-[#0F172A] group-hover:text-[#059669] mb-2 line-clamp-2 flex-1">
+            {item.title}
+          </h3>
+          <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-2">
+            {item.excerpt}
+          </p>
+
+          <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+            <div className="flex items-center gap-1.5 text-xs text-slate-500">
+              <User className="w-3 h-3" />
+              <span>{item.author}</span>
+            </div>
+            {item.readTime && (
+              <div className="flex items-center gap-1 text-xs text-slate-400">
+                <Clock className="w-3 h-3" />
+                <span>{item.readTime} {t("min")}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 }
 
@@ -355,9 +309,7 @@ function Pagination({
     const maxVisible = 5;
 
     if (totalPages <= maxVisible) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
     } else {
       if (currentPage <= 3) {
         for (let i = 1; i <= 4; i++) pages.push(i);
@@ -380,47 +332,42 @@ function Pagination({
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-12">
-      <Button
-        variant="outline"
-        size="icon"
+    <div className="flex items-center justify-center gap-2 mt-10">
+      <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-9 h-9 flex items-center justify-center rounded-md border border-slate-300 text-slate-600 hover:border-[#059669] hover:text-[#059669] disabled:opacity-40 disabled:cursor-not-allowed"
       >
         <ChevronLeft className="w-4 h-4" />
-      </Button>
+      </button>
 
       {getPageNumbers().map((page, index) => (
         <React.Fragment key={index}>
           {page === "..." ? (
-            <span className="px-2 text-muted-foreground">...</span>
+            <span className="px-2 text-slate-400 text-sm">...</span>
           ) : (
-            <Button
-              variant={currentPage === page ? "default" : "outline"}
-              size="sm"
+            <button
               onClick={() => onPageChange(page as number)}
-              className={
+              className={cn(
+                "w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium border",
                 currentPage === page
-                  ? "bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white"
-                  : ""
-              }
+                  ? "bg-[#059669] text-white border-[#059669]"
+                  : "border-slate-300 text-slate-600 hover:border-[#059669] hover:text-[#059669]"
+              )}
             >
               {page}
-            </Button>
+            </button>
           )}
         </React.Fragment>
       ))}
 
-      <Button
-        variant="outline"
-        size="icon"
+      <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-9 h-9 flex items-center justify-center rounded-md border border-slate-300 text-slate-600 hover:border-[#059669] hover:text-[#059669] disabled:opacity-40 disabled:cursor-not-allowed"
       >
         <ChevronRight className="w-4 h-4" />
-      </Button>
+      </button>
     </div>
   );
 }

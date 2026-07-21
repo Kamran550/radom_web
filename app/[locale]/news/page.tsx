@@ -4,7 +4,7 @@ import NewsletterSection from "@/components/sections/news/NewsletterSection";
 
 export default function NewsPage() {
   return (
-    <main className="min-h-screen bg-white font-sans dark:bg-slate-950">
+    <main className="min-h-screen bg-white font-sans">
       <NewsHero />
       <NewsGrid />
       <NewsletterSection />

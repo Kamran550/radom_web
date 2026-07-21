@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,15 +12,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["300", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  weight: ["500"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
 export const metadata: Metadata = {
   // Əsas məlumatlar
   title: {
     default:
-      "RIU - Radom İnternational University | Study in Serbia",
+      "RIU - Radom İnternational University | Study in Radom",
     template: "%s | RIU - Radom İnternational University",
   },
   description:
-    "RIU - Radom İnternational University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
+    "RIU - Radom İnternational University. International education in Radom with bachelor's, master's and PhD programs. Quality education through science and management.",
 
   // Açar sözlər
   keywords: [
@@ -28,23 +47,23 @@ export const metadata: Metadata = {
     "radom",
     "radomuniversity.pl",
     "Radom İnternational University",
-    "Serbia university",
-    "Serbian university",
-    "international university Serbia",
+    "Radom university",
+    "Radom university",
+    "international university Radom",
     "international university",
     "science and management university",
-    "study in Serbia",
-    "education in Serbia",
-    "PhD Serbia",
-    "PhD in Serbia",
-    "bachelor degree Serbia",
-    "bachelor programs in Serbia",
-    "master degree Serbia",
-    "master programs in Serbia",
-    "doctoral programs in Serbia",
+    "study in Radom",
+    "education in Radom",
+    "PhD Radom",
+    "PhD in Radom",
+    "bachelor degree Radom",
+    "bachelor programs in Radom",
+    "master degree Radom",
+    "master programs in Radom",
+    "doctoral programs in Radom",
     "Belgrade university",
     "Radom university",
-    "Serbia education",
+    "Radom education",
   ],
 
   // Müəllif və yaradıcı
@@ -88,9 +107,9 @@ export const metadata: Metadata = {
     alternateLocale: ["ru_RU", "tr_TR"],
     url: "https://radomuniversity.pl",
     siteName: "Radom İnternational University",
-    title: "Radom İnternational University | Study in Serbia",
+    title: "Radom İnternational University | Study in Radom",
     description:
-      "Radom İnternational University. International education in Serbia with bachelor's, master's and PhD programs. Quality education through science and management.",
+      "Radom İnternational University. International education in Radom with bachelor's, master's and PhD programs. Quality education through science and management.",
     images: [
       {
         url: "/images/RADOM-logo-dark.png",
@@ -106,7 +125,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Radom İnternational University",
     description:
-      "Radom İnternational University. International education in Serbia with bachelor's, master's and PhD programs.",
+      "Radom İnternational University. International education in Radom with bachelor's, master's and PhD programs.",
     images: ["/images/RADOM-logo-dark.png"],
     creator: "@radom_edu",
     site: "@radom_edu",
@@ -144,7 +163,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${ibmPlexMono.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>

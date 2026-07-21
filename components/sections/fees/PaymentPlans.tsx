@@ -1,11 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Card, CardTitle } from "@/components/ui/card";
 import { Calendar, CreditCard, Wallet, DollarSign } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
 
 const planKeys = [
   "fullPayment",
@@ -21,115 +19,77 @@ export default function PaymentPlans() {
   const t = useTranslations("fees.paymentPlans");
 
   return (
-    <section className="py-20 bg-linear-to-b from-white via-slate-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section className="section-padding bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-800 dark:text-slate-100">
-            {t("title")}
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
-        </motion.div>
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="section-label">{t("subtitle")}</span>
+          <h2 className="heading-xl">{t("title")}</h2>
+        </div>
 
-        {/* Payment Plans Grid - 2x2 Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        {/* Plans grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {planKeys.map((key, index) => {
             const Icon = planIcons[index];
             const discount = planDiscounts[index];
             const recommended = planRecommended[index];
-            const plan = {
-              name: t(`plans.${key}.name`),
-              description: t(`plans.${key}.description`),
-              benefits: t.raw(`plans.${key}.benefits`) as string[],
-              recommended,
-            };
+            const name = t(`plans.${key}.name`);
+            const description = t(`plans.${key}.description`);
+            const benefits = t.raw(`plans.${key}.benefits`) as string[];
+
             return (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="relative"
+              <div
+                key={key}
+                className={cn(
+                  "rounded-xl border p-6 card-hover bg-white",
+                  recommended ? "border-[#059669]" : "border-slate-200"
+                )}
               >
-                <Card
-                  className={`h-full flex flex-row md:flex-col shadow-lg hover:shadow-xl transition-all overflow-hidden ${
-                    plan.recommended
-                      ? "border-2 border-orange-500 dark:border-orange-600 bg-orange-50/50 dark:bg-orange-950/30"
-                      : "border border-slate-200 dark:border-slate-800"
-                  }`}
-                >
-                  {plan.recommended && (
-                    <div className="absolute -top-3 -right-3 bg-orange-600 dark:bg-orange-700 text-white px-3 py-1 rounded-full text-xs font-semibold rotate-12">
-                      {t("recommended")}
-                    </div>
-                  )}
-                  <div className="shrink-0 p-6 border-r md:border-r-0 md:border-b border-slate-200 dark:border-slate-800 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
-                      <Icon className="w-8 h-8 text-orange-600 dark:text-orange-400" />
-                    </div>
+                {recommended && (
+                  <div className="text-xs font-bold text-[#059669] uppercase tracking-widest mb-3">
+                    ★ {t("recommended")}
                   </div>
-                  <div className="flex-1 p-6">
-                    <CardTitle className="text-xl font-bold mb-2">
-                      {plan.name}
-                    </CardTitle>
-                    {discount !== "Custom" && (
-                      <div className="text-2xl font-bold text-orange-600 dark:text-orange-400 mb-2">
+                )}
+
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-11 h-11 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-[#059669]" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#0F172A] text-lg">{name}</h3>
+                    {discount !== "Custom" ? (
+                      <p className="text-[#059669] font-bold text-lg">
                         {discount} {t("off")}
-                      </div>
-                    )}
-                    {discount === "Custom" && (
-                      <div className="text-lg font-semibold text-orange-600 dark:text-orange-400 mb-2">
+                      </p>
+                    ) : (
+                      <p className="text-[#059669] font-semibold text-sm">
                         {t("customTerms")}
-                      </div>
+                      </p>
                     )}
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                      {plan.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {plan.benefits.map((benefit: string, idx: number) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300"
-                        >
-                          <span className="text-orange-600 dark:text-orange-400 mt-0.5">
-                            ✓
-                          </span>
-                          <span>{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-                </Card>
-              </motion.div>
+                </div>
+
+                <p className="text-slate-600 text-sm mb-4">{description}</p>
+
+                <ul className="space-y-1.5">
+                  {benefits.map((benefit: string, idx: number) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
+                      <span className="text-[#059669] font-bold shrink-0">✓</span>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             );
           })}
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="mt-12 text-center"
-        >
-          <Button
-            asChild
-            size="lg"
-            className="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white"
-          >
-            <Link href={`/contact`}>{t("contact")}</Link>
-          </Button>
-        </motion.div>
+        <div className="mt-10 text-center">
+          <Link href="/contact" className="btn-primary">
+            {t("contact")}
+          </Link>
+        </div>
       </div>
     </section>
   );

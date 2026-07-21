@@ -139,14 +139,14 @@ export const news: NewsItem[] = [
   },
   {
     id: "6",
-    title: "International Partnership with Serbian Universities",
-    slug: "international-partnership-serbian-universities",
+    title: "International Partnership with Poland Universities",
+    slug: "international-partnership-poland-universities",
     category: "university",
     date: "2024-11-25",
     excerpt:
-      "RIU signs partnership agreements with leading Serbian universities to enhance student exchange programs.",
+      "RIU signs partnership agreements with leading Poland universities to enhance student exchange programs.",
     content: `
-      <p>We're excited to announce new partnership agreements with several leading Serbian universities, expanding our student exchange program opportunities.</p>
+      <p>We're excited to announce new partnership agreements with several leading Poland universities, expanding our student exchange program opportunities.</p>
       
       <p>These partnerships will enable students to study abroad and gain international experience while earning credits towards their degrees.</p>
     `,

@@ -1,0 +1,500 @@
+/* Radom International University — Typographic Index Footer */
+
+.riu-index-footer {
+  --ink: #0b1330;
+  --ink-deep: #070c22;
+  --signal: #1b9c6e;
+  --signal-dim: #12684a;
+  --crimson: #b23a4a;
+  --slate: #8791ac;
+  --white: #ffffff;
+  --line: rgba(255, 255, 255, 0.12);
+
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+}
+
+.riu-index-footer *,
+.riu-index-footer *::before,
+.riu-index-footer *::after {
+  box-sizing: border-box;
+}
+
+/* ── Ghost watermark ── */
+.riu-footer-watermark {
+  position: absolute;
+  right: -0.06em;
+  bottom: -0.12em;
+  z-index: 0;
+  font-family: var(--font-fraunces, "Fraunces", Georgia, serif);
+  font-size: min(46vw, 560px);
+  font-weight: 700;
+  line-height: 0.82;
+  color: rgba(255, 255, 255, 0.035);
+  pointer-events: none;
+  user-select: none;
+}
+
+.riu-footer-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 2rem;
+}
+
+@media (min-width: 640px) {
+  .riu-footer-inner {
+    padding: 5rem 2rem 2.5rem;
+  }
+}
+
+/* ── Top intro row ── */
+.riu-footer-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.riu-footer-intro__left {
+  max-width: 42rem;
+}
+
+.riu-footer-eyebrow {
+  display: block;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-ibm-plex-mono, "IBM Plex Mono", monospace);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.riu-footer-headline {
+  margin: 0;
+  font-family: var(--font-fraunces, "Fraunces", Georgia, serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.125rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.riu-footer-apply-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+  text-underline-offset: 0.3em;
+  transition: color 0.2s ease;
+}
+
+.riu-footer-apply-link:hover {
+  color: var(--signal);
+}
+
+.riu-footer-apply-link:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+}
+
+.riu-footer-apply-link svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.riu-footer-apply-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ── Giant index list ── */
+.riu-footer-index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.riu-footer-index__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.riu-footer-index__link {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.riu-footer-index__link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  right: 100%;
+  z-index: -1;
+  background: var(--signal-dim);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.riu-footer-index__link:hover::before,
+.riu-footer-index__link:focus-visible::before {
+  right: 0;
+}
+
+.riu-footer-index__word {
+  font-family: var(--font-fraunces, "Fraunces", Georgia, serif);
+  font-size: clamp(1.875rem, 5vw, 3.5rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.88);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+.riu-footer-index__link:hover .riu-footer-index__word,
+.riu-footer-index__link:focus-visible .riu-footer-index__word {
+  transform: translateX(14px);
+  color: var(--white);
+}
+
+.riu-footer-index__meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.riu-footer-index__tag {
+  font-family: var(--font-ibm-plex-mono, "IBM Plex Mono", monospace);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  transition: color 0.3s ease;
+}
+
+.riu-footer-index__link:hover .riu-footer-index__tag,
+.riu-footer-index__link:focus-visible .riu-footer-index__tag {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.riu-footer-index__num {
+  font-family: var(--font-ibm-plex-mono, "IBM Plex Mono", monospace);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  min-width: 1.5rem;
+  text-align: right;
+  transition: color 0.3s ease;
+}
+
+.riu-footer-index__link:hover .riu-footer-index__num,
+.riu-footer-index__link:focus-visible .riu-footer-index__num {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.riu-footer-index__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--white);
+  background: transparent;
+  transform: rotate(-45deg);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.riu-footer-index__link:hover .riu-footer-index__arrow,
+.riu-footer-index__link:focus-visible .riu-footer-index__arrow {
+  transform: rotate(0deg);
+  background: var(--white);
+  color: var(--ink);
+  border-color: var(--white);
+}
+
+.riu-footer-index__link:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+.riu-footer-index__arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Bottom info strip ── */
+.riu-footer-info {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 2.5rem 2rem;
+  padding: 3rem 0 2.5rem;
+}
+
+.riu-footer-brand__lockup {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.riu-footer-brand__lockup:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+}
+
+.riu-footer-brand__monogram {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-family: var(--font-fraunces, "Fraunces", Georgia, serif);
+  font-size: 1.625rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.riu-footer-brand__monogram .riu-mono-r {
+  color: var(--white);
+}
+
+.riu-footer-brand__monogram .riu-mono-j {
+  color: var(--crimson);
+}
+
+.riu-footer-brand__name {
+  display: block;
+  padding-top: 0.85rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-ibm-plex-mono, "IBM Plex Mono", monospace);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.riu-footer-brand__desc {
+  margin: 0 0 1.25rem;
+  max-width: 18rem;
+  font-size: 0.78125rem;
+  line-height: 1.65;
+  color: var(--slate);
+}
+
+.riu-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.riu-footer-social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--slate);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.riu-footer-social__link:hover {
+  background: var(--signal-dim);
+  color: var(--white);
+  border-color: transparent;
+}
+
+.riu-footer-social__link:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+.riu-footer-social__link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.riu-footer-col__heading {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-ibm-plex-mono, "IBM Plex Mono", monospace);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.riu-footer-col__lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.riu-footer-col__lines li,
+.riu-footer-col__lines a {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.riu-footer-col__lines a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.riu-footer-col__lines a:hover {
+  color: var(--signal);
+}
+
+.riu-footer-col__lines a:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+.riu-footer-col__lines .riu-muted {
+  color: var(--slate);
+}
+
+/* ── Legal row ── */
+.riu-footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.riu-footer-legal__copy {
+  margin: 0;
+  font-family: var(--font-ibm-plex-mono, "IBM Plex Mono", monospace);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+}
+
+.riu-footer-legal__links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.riu-footer-legal__links a {
+  font-family: var(--font-ibm-plex-mono, "IBM Plex Mono", monospace);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.riu-footer-legal__links a:hover {
+  color: var(--white);
+}
+
+.riu-footer-legal__links a:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .riu-footer-info {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .riu-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .riu-footer-watermark {
+    display: none;
+  }
+
+  .riu-footer-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .riu-footer-index__word {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+
+  .riu-footer-index__tag {
+    display: none;
+  }
+
+  .riu-footer-index__arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .riu-footer-index__arrow svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .riu-footer-info {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .riu-footer-legal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .riu-footer-index__link::before,
+  .riu-footer-index__word,
+  .riu-footer-index__arrow,
+  .riu-footer-apply-link svg {
+    transition: none !important;
+  }
+
+  .riu-footer-index__link:hover .riu-footer-index__word,
+  .riu-footer-index__link:focus-visible .riu-footer-index__word {
+    transform: none;
+  }
+}

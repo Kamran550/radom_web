@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2, BookOpen, Check } from "lucide-react";
@@ -9,6 +8,7 @@ import { ProgramService } from "@/lib/services/program.service";
 import { Program } from "@/lib/types/program";
 import { ApiClientError } from "@/lib/api/client";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 interface ProgramSelectorProps {
   onSelect: (program: Program) => void;
@@ -63,11 +63,11 @@ export default function ProgramSelector({
 
   if (loading) {
     return (
-      <Card className="shadow-lg">
+      <Card className="shadow-sm border border-slate-200">
         <CardContent className="pt-6">
-          <div className="flex flex-col items-center justify-center py-12">
-            <Loader2 className="w-8 h-8 animate-spin text-primary mb-4" />
-            <p className="text-muted-foreground">{t("loading")}</p>
+          <div className="flex flex-col items-center justify-center py-16">
+            <Loader2 className="w-8 h-8 animate-spin text-[#059669] mb-4" />
+            <p className="text-slate-500">{t("loading")}</p>
           </div>
         </CardContent>
       </Card>
@@ -76,12 +76,16 @@ export default function ProgramSelector({
 
   if (error) {
     return (
-      <Card className="shadow-lg border-destructive">
+      <Card className="shadow-sm border border-red-200">
         <CardContent className="pt-6">
           <div className="text-center py-12">
-            <p className="text-destructive mb-4">{t("error")}</p>
-            <p className="text-sm text-muted-foreground mb-4">{error}</p>
-            <Button variant="outline" onClick={fetchPrograms}>
+            <p className="text-red-600 mb-2 font-medium">{t("error")}</p>
+            <p className="text-sm text-slate-500 mb-5">{error}</p>
+            <Button
+              variant="outline"
+              onClick={fetchPrograms}
+              className="border-[#059669] text-[#059669] hover:bg-[#059669] hover:text-white"
+            >
               {t("retry")}
             </Button>
           </div>
@@ -92,10 +96,10 @@ export default function ProgramSelector({
 
   if (programs.length === 0) {
     return (
-      <Card className="shadow-lg">
+      <Card className="shadow-sm border border-slate-200">
         <CardContent className="pt-6">
           <div className="text-center py-12">
-            <p className="text-muted-foreground">{t("noPrograms")}</p>
+            <p className="text-slate-500">{t("noPrograms")}</p>
           </div>
         </CardContent>
       </Card>
@@ -103,52 +107,52 @@ export default function ProgramSelector({
   }
 
   return (
-    <Card className="shadow-lg">
+    <Card className="shadow-sm border border-slate-200">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <BookOpen className="w-5 h-5 text-primary" />
+        <CardTitle className="flex items-center gap-2 text-[#0F172A]">
+          <BookOpen className="w-5 h-5 text-[#059669]" />
           {t("title")}
         </CardTitle>
-        <p className="text-sm text-muted-foreground mt-2">{t("subtitle")}</p>
+        <p className="text-sm text-slate-500 mt-2">{t("subtitle")}</p>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {programs.map((program, index) => (
-            <motion.div
-              key={program.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-            >
-              <Button
-                variant={
-                  selectedProgramId === program.id ? "default" : "outline"
-                }
-                className={`w-full h-auto p-4 flex flex-col items-start gap-2 ${
-                  selectedProgramId === program.id
-                    ? "bg-primary text-primary-foreground"
-                    : "hover:border-primary"
-                }`}
+          {programs.map((program) => {
+            const isSelected = selectedProgramId === program.id;
+            return (
+              <button
+                key={program.id}
                 onClick={() => onSelect(program)}
+                className={cn(
+                  "relative w-full p-4 rounded-xl border-2 text-left",
+                  isSelected
+                    ? "border-[#059669] bg-emerald-50"
+                    : "border-slate-200 bg-white hover:border-[#059669] hover:bg-emerald-50/40"
+                )}
               >
-                <div className="flex items-center justify-between w-full">
-                  <div className="flex flex-col items-start gap-1">
-                    <span className="font-semibold text-left">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex flex-col gap-1">
+                    <span className={cn(
+                      "font-semibold text-sm",
+                      isSelected ? "text-[#059669]" : "text-[#0F172A]"
+                    )}>
                       {program.name}
                     </span>
                     {program.price_per_year && (
-                      <span className="text-xs opacity-80">
+                      <span className="text-xs text-slate-500">
                         ${program.price_per_year}/year
                       </span>
                     )}
                   </div>
-                  {selectedProgramId === program.id && (
-                    <Check className="w-4 h-4 shrink-0" />
+                  {isSelected && (
+                    <div className="w-5 h-5 rounded-full bg-[#059669] flex items-center justify-center shrink-0">
+                      <Check className="w-3 h-3 text-white" />
+                    </div>
                   )}
                 </div>
-              </Button>
-            </motion.div>
-          ))}
+              </button>
+            );
+          })}
         </div>
       </CardContent>
     </Card>

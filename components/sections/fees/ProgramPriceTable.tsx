@@ -1,9 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 const programKeys = ["bachelors", "masters", "doctoral", "online"] as const;
 const programConfig = [
@@ -17,102 +16,74 @@ export default function ProgramPriceTable() {
   const t = useTranslations("fees.priceTable");
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950">
+    <section className="section-padding bg-[#F8F7F4]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-800 dark:text-slate-100">
-            {t("title")}
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
-        </motion.div>
+        {/* Header */}
+        <div className="max-w-2xl mb-12">
+          <span className="section-label">{t("subtitle")}</span>
+          <h2 className="heading-xl">{t("title")}</h2>
+        </div>
 
-        {/* Programs Grid - Staggered Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        {/* Price cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {programKeys.map((key, index) => {
             const config = programConfig[index];
-            const program = {
-              ...config,
-              name: t(`programs.${key}.name`),
-              duration: t(`programs.${key}.duration`),
-              features: t.raw(`programs.${key}.features`) as string[],
-            };
+            const name = t(`programs.${key}.name`);
+            const duration = t(`programs.${key}.duration`);
+            const features = t.raw(`programs.${key}.features`) as string[];
+
             return (
-              <motion.div
-                key={program.name}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="relative"
+              <div
+                key={key}
+                className={cn(
+                  "bg-white rounded-xl border overflow-hidden card-hover",
+                  config.popular ? "border-[#059669]" : "border-slate-200"
+                )}
               >
-                <Card
-                  className={`h-full flex flex-row md:flex-col shadow-lg hover:shadow-xl transition-all overflow-hidden ${
-                    program.popular
-                      ? "border-2 border-orange-500 dark:border-orange-600 bg-orange-50/50 dark:bg-orange-950/30"
-                      : "border border-slate-200 dark:border-slate-800"
-                  }`}
-                >
-                  {program.popular && (
-                    <div className="absolute -top-3 -right-3 bg-orange-600 dark:bg-orange-700 text-white px-4 py-1 rounded-full text-xs font-semibold rotate-12">
-                      {t("mostPopular")}
-                    </div>
-                  )}
-                  <div className="flex-1 p-6 border-r md:border-r-0 md:border-b border-slate-200 dark:border-slate-800">
-                    <CardTitle className="text-xl font-bold mb-2">
-                      {program.name}
-                    </CardTitle>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                      {program.duration}
-                    </p>
+                {config.popular && (
+                  <div className="bg-[#059669] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 text-center">
+                    {t("mostPopular")}
+                  </div>
+                )}
+
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
                     <div>
-                      <div className="text-3xl font-bold text-slate-900 dark:text-slate-100">
-                        €{program.annualFee.toLocaleString()}
-                        <span className="text-sm text-slate-600 dark:text-slate-400 font-normal ml-1">
-                          {t("year")}
-                        </span>
-                      </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                        {t("total")}: €{program.totalFee.toLocaleString()}
+                      <h3 className="text-lg font-bold text-[#0F172A] mb-1">
+                        {name}
+                      </h3>
+                      <p className="text-sm text-slate-500">{duration}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-2xl font-extrabold text-[#059669]">
+                        €{config.annualFee.toLocaleString()}
                       </p>
+                      <p className="text-xs text-slate-500">/{t("year")}</p>
                     </div>
                   </div>
-                  <CardContent className="flex-1 p-6">
-                    <ul className="space-y-2.5">
-                      {program.features.map((feature: string, idx: number) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-orange-600 dark:text-orange-400 shrink-0 mt-0.5" />
-                          <span className="text-sm text-slate-700 dark:text-slate-300">
-                            {feature}
-                          </span>
+
+                  <p className="text-sm text-slate-500 mb-4">
+                    {t("total")}: <span className="font-semibold text-[#0F172A]">€{config.totalFee.toLocaleString()}</span>
+                  </p>
+
+                  <div className="border-t border-slate-100 pt-4">
+                    <ul className="space-y-2">
+                      {features.map((feature: string, idx: number) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
+                          <Check className="w-4 h-4 text-[#059669] shrink-0 mt-0.5" />
+                          {feature}
                         </li>
                       ))}
                     </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>
 
         {/* Note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="mt-12 text-center"
-        >
-          <p className="text-sm text-muted-foreground">{t("note")}</p>
-        </motion.div>
+        <p className="mt-8 text-sm text-slate-500 text-center">{t("note")}</p>
       </div>
     </section>
   );

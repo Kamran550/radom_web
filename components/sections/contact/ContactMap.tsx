@@ -8,14 +8,14 @@ import { useTranslations } from "next-intl";
 
 export default function ContactMap() {
   const t = useTranslations("contact.map");
-  // Google Maps embed URL for Jurija Gagarina 12, 11070, Beograd, Serbia
+  // Google Maps embed URL for Jurija Gagarina 12, 11070, Beograd, Radom
   const mapEmbedUrl =
-    "https://maps.google.com/maps?q=Jurija+Gagarina+12,+11070,+Beograd,+Serbia&t=&z=15&ie=UTF8&iwloc=&output=embed";
+    "https://maps.google.com/maps?q=Jacka+Malczewskiego+29,+26-600,+Radom,+Poland&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
   const address = {
-    full: "Jurija Gagarina 12, 11070, Beograd, Serbia",
+    full: "Jacka Malczewskiego 29, 26-600 Radom, Poland",
     googleMapsUrl:
-      "https://www.google.com/maps/place/Jurija+Gagarina+12,+11070,+Beograd,+Serbia",
+      "https://www.google.com/maps/place/Jacka+Malczewskiego+29,+26-600+Radom,+Poland",
   };
 
   return (
@@ -32,7 +32,9 @@ export default function ContactMap() {
             <MapPin className="w-6 h-6 text-orange-600 dark:text-orange-400" />
             {t("title")}
           </CardTitle>
-          <p className="text-slate-600 dark:text-slate-400 mt-2">{t("subtitle")}</p>
+          <p className="text-slate-600 dark:text-slate-400 mt-2">
+            {t("subtitle")}
+          </p>
         </CardHeader>
         <CardContent className="flex-1 flex flex-col">
           {/* Map */}
