@@ -29,6 +29,8 @@ import { Program } from "@/lib/types/program";
 import { nationalities } from "@/constants/nationalities";
 import { languages } from "@/constants/languages";
 import { DegreeType } from "@/lib/types/degree";
+import { motion } from "framer-motion";
+
 
 interface StudentApplicationFormProps {
   facultyId: number;
