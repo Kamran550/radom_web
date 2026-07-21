@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Calendar, User, Clock, ArrowLeft, Share2, Tag } from "lucide-react";
 import { NewsItem } from "@/constants/news";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+
 
 interface NewsDetailProps {
   newsItem: NewsItem;
