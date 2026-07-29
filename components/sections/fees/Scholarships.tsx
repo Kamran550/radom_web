@@ -89,8 +89,8 @@ export default function Scholarships() {
 
         {/* CTA */}
         <div className="mt-10 text-center">
-          <Link href="/apply" className="btn-primary">
-            {t("apply")}
+          <Link href="/contact" className="btn-primary">
+            {t("contact")}
           </Link>
         </div>
       </div>

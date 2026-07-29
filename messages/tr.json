@@ -33,7 +33,7 @@
   "hero": {
     "title": "Bilim ve Yönetimde Mükemmellikle Geleceğinizi Dönüştürün",
     "subtitle": "Yenilik ve liderliğe adanmış canlı bir akademik topluluğa katılın. RADOM'da yolculuğunuza başlayın ve potansiyelinizi keşfedin. 2025 Güz dönemi başvuruları şimdi açık.",
-    "primaryButton": "Başvurunu Başlat",
+    "primaryButton": "İletişime Geçin",
     "secondaryButton": "Programlarımızı Keşfet",
     "badge": "2025 Güz Dönemi Başvuruları Açıldı",
     "stats": {
@@ -109,8 +109,8 @@
   },
   "cta": {
     "title": "Akademik Yolculuğunuza Bugün Başlayın",
-    "description": "RADOM'da dönüştürücü bir eğitime doğru ilk adımı atın. Basitleştirilmiş başvuru sürecimiz geleceğinize başlamayı kolaylaştırır.",
-    "button": "Şimdi Başvur",
+    "description": "RADOM'da dönüştürücü bir eğitime doğru ilk adımı atın. Ekibimiz geleceğinizin her adımında size rehberlik etmeye hazır.",
+    "button": "İletişime Geçin",
     "learnMore": "Programları Keşfet",
     "deadlineTitle": "Müraciət Tarixi",
     "applicationsOpen": "Müraciətlər açıqdır"
@@ -372,6 +372,7 @@
       "eligibility": "Uygunluk",
       "applicationDeadline": "Başvuru Son Tarihi",
       "apply": "Burslar için Başvur",
+      "contact": "İletişime Geçin",
       "items": {
         "academicExcellence": {
           "name": "Akademik Mükemmellik",
@@ -493,7 +494,8 @@
       "careerPaths": "Kariyer Yolları:",
       "more": "daha fazla",
       "learnMore": "Daha Fazla Bilgi",
-      "apply": "Başvur"
+      "apply": "Başvur",
+      "contact": "İletişim"
     },
     "details": {
       "backToPrograms": "Programlara Dön",
@@ -504,7 +506,9 @@
       "programFeatures": "Program Özellikleri",
       "careerOpportunities": "Kariyer Fırsatları",
       "readyToApply": "Başvurmaya Hazır mısınız?",
+      "getInTouch": "İletişime Geçin",
       "applyDescription": "{title} programı için başvurunuzu bugün başlatın.",
+      "contactDescription": "{title} programı ile ilgileniyor musunuz? Rehberlik için kabul ekibimizle iletişime geçin.",
       "applyNow": "Şimdi Başvur",
       "contactAdmissions": "Kabul Ofisi ile İletişim",
       "questions": "Sorularınız mı var? Kişisel rehberlik için kabul ofisimizle iletişime geçin."
@@ -633,6 +637,7 @@
     "eyebrow": "Kabul 2026/27: Açık",
     "headline": "Bilim ve yönetim eğitiminde mükemmelliği bir araya getiriyoruz.",
     "applyNow": "Başvur",
+    "contactUs": "İletişime Geçin",
     "brandName": "Radom Uluslararası Üniversitesi",
     "phone": "Telefon",
     "email": "E-posta",

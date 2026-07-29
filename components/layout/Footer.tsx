@@ -8,7 +8,7 @@ import "./footer.css"
 
 
 const contactInfo = {
-  phones: ["+32 483 38 31 70", "+90 505 621 26 26"],
+  phones: ["+48 739 47 16 22"],
   emails: ["info@radomuniversity.pl", "international@radomuniversity.pl"],
   address: ["Jacka Malczewskiego 29, 26-600 Radom, Polonya"],
 };
@@ -36,7 +36,6 @@ const indexLinks = [
   { href: "/programs", key: "programs", tagKey: "programs" },
   { href: "/fees", key: "fees", tagKey: "fees" },
   { href: "/contact", key: "contact", tagKey: "contact" },
-  { href: "/apply", key: "apply", tagKey: "apply" },
   { href: "/e-library", key: "eLibrary", tagKey: "eLibrary" },
 ] as const;
 
@@ -73,8 +72,8 @@ export function Footer() {
             <span className="riu-footer-eyebrow">{t("eyebrow")}</span>
             <h2 className="riu-footer-headline">{t("headline")}</h2>
           </div>
-          <Link href="/apply" className="riu-footer-apply-link">
-            {t("applyNow")}
+          <Link href="/contact" className="riu-footer-apply-link">
+            {t("contactUs")}
             <ArrowIcon />
           </Link>
         </div>

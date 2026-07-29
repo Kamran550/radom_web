@@ -199,10 +199,10 @@ function ProgramCard({ program, index }: { program: Program; index: number }) {
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
           <Link
-            href="/apply"
+            href="/contact"
             className="btn-primary text-sm py-2 px-4"
           >
-            {t("apply")}
+            {t("contact")}
           </Link>
         </div>
       </div>

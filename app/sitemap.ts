@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/programs", // Proqramlar
     "/fees", // Ödəniş
     "/contact", // Əlaqə
-    "/apply", // Müraciət
     "/news", // Xəbərlər
   ];
 

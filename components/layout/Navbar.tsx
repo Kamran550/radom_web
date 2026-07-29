@@ -14,7 +14,7 @@ const locales = [
   { code: "ru", label: "RU" },
 ] as const;
 
-const TOP_BAR_PHONE = "+32 483 38 31 70";
+const TOP_BAR_PHONE = "+48 739 47 16 22";
 const TOP_BAR_EMAIL = "international@radomuniversity.pl";
 
 export function NavbarDemo() {
@@ -282,12 +282,12 @@ function Navbar() {
                     ))}
                   </div>
 
-                  <Link
-                    href={`/${locale}/apply`}
+                  {/* <Link
+                    href={`/${locale}/contact`}
                     className="inline-flex items-center justify-center bg-[#0F172A] text-white text-[12px] font-semibold uppercase tracking-[0.16em] px-5 py-2.5 ml-auto ms-14 xl:ms-20 shrink-0 hover:bg-[#9B1C1C] transition-colors"
                   >
-                    {t("apply")}
-                  </Link>
+                    {t("contact")}
+                  </Link> */}
                 </div>
               </div>
 
@@ -440,11 +440,11 @@ function Navbar() {
                 ))}
               </div>
               <Link
-                href={`/${locale}/apply`}
+                href={`/${locale}/contact`}
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex w-full items-center justify-center bg-[#0F172A] text-white text-[13px] font-semibold uppercase tracking-[0.16em] py-3 hover:bg-[#9B1C1C] transition-colors"
               >
-                {t("apply")}
+                {t("contact")}
               </Link>
             </div>
           </div>

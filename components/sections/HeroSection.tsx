@@ -40,7 +40,7 @@ export default function HeroSection() {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 pt-2">
-                <Link href="/apply" className="btn-primary">
+                <Link href="/contact" className="btn-primary">
                   {t("primaryButton")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>

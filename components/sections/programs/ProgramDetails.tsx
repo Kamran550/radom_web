@@ -206,20 +206,17 @@ export default function ProgramDetails({ program }: ProgramDetailsProps) {
           >
             <Card className="bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 border-primary/20">
               <CardHeader>
-                <CardTitle>{t("readyToApply")}</CardTitle>
+                <CardTitle>{t("getInTouch")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm text-gray-600 dark:text-gray-300">
-                  {t("applyDescription", { title: program.title })}
+                  {t("contactDescription", { title: program.title })}
                 </p>
                 <Button
                   asChild
                   size="lg"
                   className="w-full bg-primary hover:bg-primary/90"
                 >
-                  <Link href="/apply">{t("applyNow")}</Link>
-                </Button>
-                <Button asChild variant="outline" className="w-full">
                   <Link href="/contact">{t("contactAdmissions")}</Link>
                 </Button>
                 <div className="pt-4 border-t">

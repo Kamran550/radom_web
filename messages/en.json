@@ -33,7 +33,7 @@
   "hero": {
     "title": "Transform Your Future with Excellence in Science and Management",
     "subtitle": "Join a vibrant academic community dedicated to innovation and leadership. Begin your journey at RADOM and unlock your potential. Applications for Fall 2025 are now open.",
-    "primaryButton": "Start Your Application",
+    "primaryButton": "Contact Us",
     "secondaryButton": "Discover Our Programs",
     "badge": "Spring 2026 Applications Now Open",
     "stats": {
@@ -109,8 +109,8 @@
   },
   "cta": {
     "title": "Begin Your Academic Journey Today",
-    "description": "Take the first step towards a transformative education at RADOM. Our streamlined application process makes it easy to start your future.",
-    "button": "Apply Now",
+    "description": "Take the first step towards a transformative education at RADOM. Our team is ready to guide you through every step of your future.",
+    "button": "Contact Us",
     "learnMore": "Explore Programs",
     "deadlineTitle": "Application Deadline",
     "applicationsOpen": "Applications are open"
@@ -372,6 +372,7 @@
       "eligibility": "Eligibility",
       "applicationDeadline": "Application Deadline",
       "apply": "Apply for Scholarships",
+      "contact": "Contact Us",
       "items": {
         "academicExcellence": {
           "name": "Academic Excellence",
@@ -493,7 +494,8 @@
       "careerPaths": "Career Paths:",
       "more": "more",
       "learnMore": "Learn More",
-      "apply": "Apply"
+      "apply": "Apply",
+      "contact": "Contact"
     },
     "details": {
       "backToPrograms": "Back to Programs",
@@ -504,7 +506,9 @@
       "programFeatures": "Program Features",
       "careerOpportunities": "Career Opportunities",
       "readyToApply": "Ready to Apply?",
+      "getInTouch": "Get in Touch",
       "applyDescription": "Start your application for the {title} program today.",
+      "contactDescription": "Interested in the {title} program? Reach out to our admissions team for guidance.",
       "applyNow": "Apply Now",
       "contactAdmissions": "Contact Admissions",
       "questions": "Questions? Contact our admissions office for personalized guidance."
@@ -633,6 +637,7 @@
     "eyebrow": "Admissions 2026/27: Open",
     "headline": "Combining excellence in science and management education.",
     "applyNow": "Apply Now",
+    "contactUs": "Contact Us",
     "brandName": "Radom International University",
     "phone": "Phone",
     "email": "Email",
