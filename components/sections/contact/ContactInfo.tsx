@@ -15,7 +15,7 @@ const contactInfo = {
     support: "rectorate@radomuniversity.pl",
   },
   address: {
-    city: "Jurija Gagarina 12, 11070, Beograd, Radom",
+    city: "Jacka Malczewskiego 29, 26-600 Radom, Polonya",
     country: "Radom",
   },
   hours: {

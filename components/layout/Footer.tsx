@@ -4,12 +4,13 @@ import React from "react";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
-import "./footer.css";
+import "./footer.css"
+
 
 const contactInfo = {
   phones: ["+32 483 38 31 70", "+90 505 621 26 26"],
   emails: ["info@radomuniversity.pl", "international@radomuniversity.pl"],
-  address: ["Jurija Gagarina 12, 11070, Beograd", "Radom, Poland"],
+  address: ["Jacka Malczewskiego 29, 26-600 Radom, Polonya"],
 };
 
 const socialLinks = [
