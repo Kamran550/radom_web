@@ -181,19 +181,19 @@
       "title": "Tarihimiz",
       "subtitle": "Büyüme, mükemmellik ve barış eğitimine bağlılığın yolculuğu",
       "milestones": {
-        "2020": {
+        "2001": {
           "title": "Kuruluş",
           "description": "Radom Uluslararası Üniversitesi, barış eğitimi ve küresel vatandaşlığa adanmış dünya standartlarında bir kurum yaratma vizyonuyla kuruldu."
         },
-        "2021": {
+        "2005": {
           "title": "İlk Mezunlar",
           "description": "Akademik mükemmelliğe doğru yolculuğumuzda önemli bir dönüm noktasını işaretleyerek ilk mezun sınıfımızı gururla kutladık."
         },
-        "2022": {
+        "2015": {
           "title": "Uluslararası Tanınma",
           "description": "RADOM akreditasyon aldı ve dünya çapında önde gelen üniversitelerle ortaklıklar kurarak küresel erişimimizi genişletti."
         },
-        "2023": {
+        "2022": {
           "title": "Genişleme",
           "description": "50'den fazla ülkeden öğrenci ağırlayarak programlarımızı ve tesislerimizi genişlettik ve çeşitliliğe bağlılığımızı güçlendirdik."
         }
@@ -205,12 +205,12 @@
         "title": "Rektör Profili",
         "fullName": "Ad Soyad",
         "position": "Pozisyon",
-        "fullNameValue": "Prof. Dr. Eraytun Koralmaz",
-        "positionValue": "Radom Uluslararası Üniversitesi (RADOM) Rektörü",
-        "description": "Prof. Dr. Eraytun Koralmaz, yükseköğretim ve kurumsal liderlik alanında geniş deneyime sahip seçkin bir akademisyendir. Kariyeri boyunca akademik gelişime aktif olarak katkıda bulunmuş, ulusal ve uluslararası projelerde yer almış ve uzmanlık alanındaki saygın dergilerde yayınlar yapmıştır. Rektör olarak atanmadan önce Prof. Dr. Koralmaz, öğretim görevlisi, bölüm başkanı ve rektör yardımcısı da dahil olmak üzere çeşitli akademik ve idari görevlerde bulunmuştur. Mesleki yolculuğu, akademik mükemmelliğe, yeniliğe ve etkili üniversite yönetimine olan güçlü bağlılığını yansıtmaktadır.",
-        "qualifications": "Radom Uluslararası Üniversitesi Rektörü olarak, kaliteli eğitime, uluslararası ortaklıklara, öğrenci merkezli öğrenmeye ve akademik kadronun sürekli gelişimine öncelik veren modern, küresel bağlantılı bir kurum hayal etmektedir. Prof. Dr. Koralmaz, öğrencileri geleceğin zorluklarına hazırlayan kapsayıcı, şeffaf ve ileri görüşlü bir akademik ortam oluşturmaya kendini adamıştır.",
+        "fullNameValue": "Prof. dr hab. Marek Wierzbicki",
+        "positionValue": "Rektör",
+        "description": "Prof. dr hab. Marek Wierzbicki, yükseköğretim ve kurumsal liderlik alanında geniş deneyime sahip seçkin bir akademisyendir. Kariyeri boyunca akademik gelişime aktif olarak katkıda bulunmuş, ulusal ve uluslararası projelerde yer almış ve uzmanlık alanındaki saygın dergilerde yayınlar yapmıştır. Rektör olarak atanmadan önce öğretim görevlisi, bölüm başkanı ve rektör yardımcısı da dahil olmak üzere çeşitli akademik ve idari görevlerde bulunmuştur. Mesleki yolculuğu, akademik mükemmelliğe, yeniliğe ve etkili üniversite yönetimine olan güçlü bağlılığını yansıtmaktadır.",
+        "qualifications": "Radom Uluslararası Üniversitesi Rektörü olarak, kaliteli eğitime, uluslararası ortaklıklara, öğrenci merkezli öğrenmeye ve akademik kadronun sürekli gelişimine öncelik veren modern, küresel bağlantılı bir kurum hayal etmektedir. Prof. dr hab. Marek Wierzbicki, öğrencileri geleceğin zorluklarına hazırlayan kapsayıcı, şeffaf ve ileri görüşlü bir akademik ortam oluşturmaya kendini adamıştır.",
         "email": "E-posta",
-        "emailValue": "eraytun.koralmaz@radomuniversity.pl"
+        "emailValue": "marek.wierzbicki@radomuniversity.pl"
       },
       "welcomeMessage": {
         "title": "Rektörden Hoş Geldiniz Mesajı",
@@ -220,7 +220,7 @@
         "paragraph3": "Öğretim üyelerimiz, personelimiz ve dünyanın dört bir yanındaki ortaklarımızla birlikte, kapsayıcı, modern ve dinamik bir üniversite deneyimi yaratmaya kararlıyız.",
         "closing": "Çalışmalarınızda ve ötesinde başarı ve tatmin dilerim.",
         "signature": "Saygılarımla,",
-        "signatureName": "Prof. Dr. Eraytun Koralmaz",
+        "signatureName": "Prof. dr hab. Marek Wierzbicki",
         "signatureTitle": "Rektör"
       },
       "tabs": {
@@ -233,23 +233,23 @@
       "subtitle": "Mükemmellik ve hizmete adanmış idari ekibimizle tanışın",
       "viceRector": {
         "position": "Rektör Yardımcısı",
-        "name": "Prof Dr. Damjan Krelov",
-        "email": "damjan.krelov@radomuniversity.pl"
+        "name": "Prof. dr Tomasz Kaczmarek",
+        "email": "tomasz.kaczmarek@radomuniversity.pl"
       },
       "rectorAdvisor": {
         "position": "Rektör Danışmanı",
-        "name": "Dr. Elira Kostanova",
-        "email": "elira.kostanova@radomuniversity.pl"
+        "name": "Dr hab. Piotr Zawadzki",
+        "email": "piotr.zawadzki@radomuniversity.pl"
       },
       "secretaryGeneral": {
         "position": "Genel Sekreter",
-        "name": "Dr. Jovik Terzan",
-        "email": "jovik.terzan@radomuniversity.pl"
+        "name": "Dr Katarzyna Nowicka",
+        "email": "katarzyna.nowicka@radomuniversity.pl"
       },
       "officeDirector": {
         "position": "Uluslararası Ofis Müdürü",
-        "name": "Berilay Korhan",
-        "email": "berilay.korhan@radomuniversity.pl"
+        "name": "Mgr Anna Zielińska",
+        "email": "anna.zielinska@radomuniversity.pl"
       }
     }
   },

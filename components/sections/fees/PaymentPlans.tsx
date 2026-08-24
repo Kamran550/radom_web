@@ -1,9 +1,9 @@
 "use client";
 
-import { Calendar, CreditCard, Wallet, DollarSign } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const planKeys = [
   "fullPayment",
@@ -11,7 +11,6 @@ const planKeys = [
   "monthlyPayment",
   "installmentPlan",
 ] as const;
-const planIcons = [DollarSign, Calendar, CreditCard, Wallet] as const;
 const planDiscounts = ["10%", "5%", "0%", "Custom"] as const;
 const planRecommended = [false, true, false, false] as const;
 
@@ -19,18 +18,25 @@ export default function PaymentPlans() {
   const t = useTranslations("fees.paymentPlans");
 
   return (
-    <section className="section-padding bg-white">
+    <section className="bg-[#0F172A] text-white py-20 md:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="section-label">{t("subtitle")}</span>
-          <h2 className="heading-xl">{t("title")}</h2>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="max-w-2xl mb-14 md:mb-16"
+        >
+          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#E8B4B4] mb-4">
+            {t("subtitle")}
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1]">
+            {t("title")}
+          </h2>
+        </motion.div>
 
-        {/* Plans grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-0 border-t border-white/15">
           {planKeys.map((key, index) => {
-            const Icon = planIcons[index];
             const discount = planDiscounts[index];
             const recommended = planRecommended[index];
             const name = t(`plans.${key}.name`);
@@ -38,58 +44,77 @@ export default function PaymentPlans() {
             const benefits = t.raw(`plans.${key}.benefits`) as string[];
 
             return (
-              <div
+              <motion.article
                 key={key}
-                className={cn(
-                  "rounded-xl border p-6 card-hover bg-white",
-                  recommended ? "border-[#059669]" : "border-slate-200"
-                )}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                className="group grid lg:grid-cols-[8rem_minmax(0,1fr)_minmax(0,1.2fr)] gap-6 lg:gap-10 py-10 md:py-12 border-b border-white/15"
               >
-                {recommended && (
-                  <div className="text-xs font-bold text-[#059669] uppercase tracking-widest mb-3">
-                    ★ {t("recommended")}
-                  </div>
-                )}
-
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-11 h-11 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-[#059669]" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-[#0F172A] text-lg">{name}</h3>
-                    {discount !== "Custom" ? (
-                      <p className="text-[#059669] font-bold text-lg">
-                        {discount} {t("off")}
-                      </p>
-                    ) : (
-                      <p className="text-[#059669] font-semibold text-sm">
-                        {t("customTerms")}
-                      </p>
-                    )}
-                  </div>
+                {/* Discount figure */}
+                <div>
+                  {recommended && (
+                    <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#E8B4B4] mb-2">
+                      {t("recommended")}
+                    </p>
+                  )}
+                  <p
+                    className={`text-4xl sm:text-5xl font-extrabold tabular-nums tracking-tight ${
+                      recommended ? "text-[#E8B4B4]" : "text-white"
+                    }`}
+                  >
+                    {discount === "Custom" ? "—" : discount}
+                  </p>
+                  <p className="text-xs text-slate-500 mt-1 uppercase tracking-wider">
+                    {discount === "Custom" ? t("customTerms") : t("off")}
+                  </p>
                 </div>
 
-                <p className="text-slate-600 text-sm mb-4">{description}</p>
+                {/* Name + description */}
+                <div>
+                  <span className="text-xs font-mono text-slate-500 tabular-nums mb-2 block">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-2xl font-bold tracking-tight mb-3">
+                    {name}
+                  </h3>
+                  <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-md">
+                    {description}
+                  </p>
+                </div>
 
-                <ul className="space-y-1.5">
-                  {benefits.map((benefit: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
-                      <span className="text-[#059669] font-bold shrink-0">✓</span>
+                {/* Benefits */}
+                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 self-center">
+                  {benefits.map((benefit, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2.5 text-sm text-slate-300"
+                    >
+                      <span className="mt-1.5 w-1.5 h-px shrink-0 bg-[#9B1C1C]" />
                       {benefit}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.article>
             );
           })}
         </div>
 
-        {/* CTA */}
-        <div className="mt-10 text-center">
-          <Link href="/contact" className="btn-primary">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12"
+        >
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-white text-[#0F172A] text-sm font-semibold uppercase tracking-[0.12em] px-7 py-3.5 hover:bg-[#9B1C1C] hover:text-white transition-colors"
+          >
             {t("contact")}
+            <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

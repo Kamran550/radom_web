@@ -1,268 +1,232 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Mail, Award, GraduationCap, Globe } from "lucide-react";
+import { Mail, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+type LeadershipMember = {
+  id: string;
+  name: string;
+  position: string;
+  email: string;
+};
 
 export default function RectoratePage() {
   const t = useTranslations("about.rectorate");
+  const tAdmin = useTranslations("about.administrativeUnits");
   const [activeTab, setActiveTab] = useState<"profile" | "welcomeMessage">(
     "profile"
   );
 
+  const leadership: LeadershipMember[] = [
+    {
+      id: "rector",
+      name: t("profile.fullNameValue"),
+      position: t("profile.positionValue"),
+      email: t("profile.emailValue"),
+    },
+    {
+      id: "vice-rector",
+      name: tAdmin("viceRector.name"),
+      position: tAdmin("viceRector.position"),
+      email: tAdmin("viceRector.email"),
+    },
+    {
+      id: "rector-advisor",
+      name: tAdmin("rectorAdvisor.name"),
+      position: tAdmin("rectorAdvisor.position"),
+      email: tAdmin("rectorAdvisor.email"),
+    },
+    {
+      id: "secretary-general",
+      name: tAdmin("secretaryGeneral.name"),
+      position: tAdmin("secretaryGeneral.position"),
+      email: tAdmin("secretaryGeneral.email"),
+    },
+    {
+      id: "office-director",
+      name: tAdmin("officeDirector.name"),
+      position: tAdmin("officeDirector.position"),
+      email: tAdmin("officeDirector.email"),
+    },
+  ];
+
   return (
-    <main className="min-h-screen bg-linear-to-b from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-black dark:to-slate-950 font-sans pt-36 pb-20">
-      {/* Hero Section */}
-      <div className="relative bg-linear-to-r from-primary/10 via-primary/5 to-transparent dark:from-primary/20 dark:via-primary/10 border-b border-gray-200/50 dark:border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <main className="min-h-screen bg-[#F8F7F4] font-sans pt-32 pb-20">
+      {/* Hero */}
+      <div className="border-b border-slate-200 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            transition={{ duration: 0.55 }}
           >
-            <div className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 rounded-full mb-6">
-              <Award className="h-5 w-5 text-primary" />
-              <span className="text-sm font-semibold text-primary">
-                {t("title")}
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent mb-4 tracking-tight">
+            <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#9B1C1C] mb-4">
+              Leadership
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0F172A] tracking-tight mb-4">
               {t("title")}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Leadership, Excellence, and Vision for Higher Education
+            <p className="text-lg text-slate-600 max-w-2xl leading-relaxed">
+              Leadership, excellence, and vision for higher education
             </p>
           </motion.div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 md:mt-14">
         {/* Tabs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-12"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex mb-10 border-b border-slate-200"
         >
-          <div className="inline-flex rounded-xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-1.5 border border-gray-200/50 dark:border-slate-700/50 shadow-lg">
+          {(
+            [
+              { key: "profile", label: t("tabs.profile") },
+              { key: "welcomeMessage", label: t("tabs.welcomeMessage") },
+            ] as const
+          ).map((tab) => (
             <button
-              onClick={() => setActiveTab("profile")}
-              className={`
-                relative px-8 py-3.5 rounded-lg text-sm font-semibold transition-all duration-300
-                ${
-                  activeTab === "profile"
-                    ? "text-white shadow-lg"
-                    : "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-foreground"
-                }
-              `}
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`relative px-5 sm:px-8 py-3.5 text-sm font-semibold tracking-wide transition-colors ${
+                activeTab === tab.key
+                  ? "text-[#0F172A]"
+                  : "text-slate-500 hover:text-[#0F172A]"
+              }`}
             >
-              {activeTab === "profile" && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-linear-to-r from-primary to-primary/80 rounded-lg"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              {tab.label}
+              {activeTab === tab.key && (
+                <motion.span
+                  layoutId="rectorateTab"
+                  className="absolute inset-x-0 -bottom-px h-0.5 bg-[#9B1C1C]"
+                  transition={{ type: "spring", bounce: 0.15, duration: 0.45 }}
                 />
               )}
-              <span className="relative z-10">{t("tabs.profile")}</span>
             </button>
-            <button
-              onClick={() => setActiveTab("welcomeMessage")}
-              className={`
-                relative px-8 py-3.5 rounded-lg text-sm font-semibold transition-all duration-300
-                ${
-                  activeTab === "welcomeMessage"
-                    ? "text-white shadow-lg"
-                    : "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-foreground"
-                }
-              `}
-            >
-              {activeTab === "welcomeMessage" && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 rounded-lg"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10">{t("tabs.welcomeMessage")}</span>
-            </button>
-          </div>
+          ))}
         </motion.div>
 
-        {/* Content */}
-        <div className="max-w-6xl mx-auto">
-          <AnimatePresence mode="wait">
-            {activeTab === "profile" ? (
-              <motion.div
-                key="profile"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200/50 dark:border-slate-700/50 overflow-hidden"
-              >
-                <div className="lg:flex">
-                  {/* Rector Image */}
-                  <div className="lg:w-2/5 bg-linear-to-br from-primary/5 via-primary/10 to-primary/5 dark:from-primary/10 dark:via-primary/20 dark:to-primary/10 p-12 flex items-center justify-center relative overflow-hidden">
-                    <div className="relative z-10 w-full max-w-md">
-                      <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/50 dark:ring-slate-800/50">
-                        <Image
-                          src="/images/rector.jpeg"
-                          alt={t("profile.fullNameValue")}
-                          fill
-                          className="object-cover"
-                          priority
-                        />
-                        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
-                      </div>
-                      <div className="mt-6 text-center">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full shadow-lg">
-                          <Award className="h-4 w-4 text-primary" />
-                          <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
-                            Rector
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+        <AnimatePresence mode="wait">
+          {activeTab === "profile" ? (
+            <motion.div
+              key="profile"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35 }}
+              className="space-y-8"
+            >
+              {/* Featured Rector — text card */}
+              <article className="bg-white border border-slate-200 overflow-hidden">
+                <div className="bg-[#0F172A] px-8 py-10 sm:px-12 sm:py-12">
+                  <div className="inline-flex items-center gap-2 mb-5">
+                    <Award className="h-4 w-4 text-[#E8B4B4]" />
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#E8B4B4]">
+                      {t("profile.positionValue")}
+                    </span>
                   </div>
-
-                  {/* Profile Content */}
-                  <div className="lg:w-3/5 p-8 md:p-12 lg:p-16">
-                    <div className="mb-8">
-                      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
-                        {t("profile.title")}
-                      </h2>
-                      <div className="h-1 w-24 bg-gradient-to-r from-primary to-primary/50 rounded-full"></div>
-                    </div>
-
-                    {/* Info Cards */}
-                    <div className="grid gap-4 mb-8">
-                      <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-gray-50 to-transparent dark:from-slate-800/50 rounded-xl border border-gray-200/50 dark:border-slate-700/50">
-                        <div className="p-2 bg-primary/10 dark:bg-primary/20 rounded-lg">
-                          <GraduationCap className="h-5 w-5 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
-                            {t("profile.fullName")}
-                          </p>
-                          <p className="text-lg font-bold text-gray-900 dark:text-white">
-                            {t("profile.fullNameValue")}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4 p-4 bg-linear-to-r from-gray-50 to-transparent dark:from-slate-800/50 rounded-xl border border-gray-200/50 dark:border-slate-700/50">
-                        <div className="p-2 bg-primary/10 dark:bg-primary/20 rounded-lg">
-                          <Globe className="h-5 w-5 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
-                            {t("profile.position")}
-                          </p>
-                          <p className="text-base font-semibold text-gray-900 dark:text-white leading-relaxed">
-                            {t("profile.positionValue")}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4 p-4 bg-linear-to-r from-gray-50 to-transparent dark:from-slate-800/50 rounded-xl border border-gray-200/50 dark:border-slate-700/50">
-                        <div className="p-2 bg-primary/10 dark:bg-primary/20 rounded-lg">
-                          <Mail className="h-5 w-5 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
-                            {t("profile.email")}
-                          </p>
-                          <a
-                            href={`mailto:${t("profile.emailValue")}`}
-                            className="text-base font-semibold text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-2 group"
-                          >
-                            {t("profile.emailValue")}
-                            <span className="opacity-0 group-hover:opacity-100 transition-opacity">
-                              →
-                            </span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <div className="space-y-6">
-                      <div className="prose prose-lg dark:prose-invert max-w-none">
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
-                          {t("profile.description")}
-                        </p>
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base mt-4">
-                          {t("profile.qualifications")}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="welcomeMessage"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200/50 dark:border-slate-700/50 p-8 md:p-12 lg:p-16"
-              >
-                <div className="mb-8">
-                  <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
-                    {t("welcomeMessage.title")}
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
+                    {t("profile.fullNameValue")}
                   </h2>
-                  <div className="h-1 w-24 bg-linear-to-r from-primary to-primary/50 rounded-full"></div>
+                  <a
+                    href={`mailto:${t("profile.emailValue")}`}
+                    className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors"
+                  >
+                    <Mail className="h-4 w-4" />
+                    {t("profile.emailValue")}
+                  </a>
                 </div>
 
-                <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  <div className="prose prose-lg dark:prose-invert max-w-none">
-                    <p className="font-semibold text-xl text-gray-900 dark:text-white mb-6">
-                      {t("welcomeMessage.greeting")}
-                    </p>
-                    <p className="text-base leading-relaxed">
-                      {t("welcomeMessage.paragraph1")}
-                    </p>
-                    <p className="text-base leading-relaxed">
-                      {t("welcomeMessage.paragraph2")}
-                    </p>
-                    <p className="text-base leading-relaxed">
-                      {t("welcomeMessage.paragraph3")}
-                    </p>
-                    <p className="text-base leading-relaxed mt-8 font-medium">
-                      {t("welcomeMessage.closing")}
-                    </p>
-                  </div>
-
-                  <div className="mt-12 pt-8 border-t-2 border-gray-200 dark:border-slate-700">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                      <div>
-                        <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">
-                          {t("welcomeMessage.signature")}
-                        </p>
-                        <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                          {t("welcomeMessage.signatureName")}
-                        </p>
-                        <p className="text-lg text-primary font-semibold mt-1">
-                          {t("welcomeMessage.signatureTitle")}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2 px-6 py-3 bg-primary/10 dark:bg-primary/20 rounded-xl">
-                        <Award className="h-6 w-6 text-primary" />
-                        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                          Official Seal
-                        </span>
-                      </div>
-                    </div>
+                <div className="p-8 sm:p-10 md:p-12">
+                  <h3 className="text-xl font-bold text-[#0F172A] mb-6 tracking-tight">
+                    {t("profile.title")}
+                  </h3>
+                  <div className="space-y-5 text-slate-600 leading-relaxed">
+                    <p>{t("profile.description")}</p>
+                    <p>{t("profile.qualifications")}</p>
                   </div>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+              </article>
+
+              {/* Full leadership — text-only cards */}
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-slate-500 mb-5">
+                  University Leadership
+                </h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+                  {leadership.map((member, index) => (
+                    <article
+                      key={member.id}
+                      className={`bg-white border border-slate-200 p-6 sm:p-7 ${
+                        index === 0 ? "sm:col-span-2 lg:col-span-3 border-l-4 border-l-[#9B1C1C]" : ""
+                      }`}
+                    >
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#9B1C1C] mb-3">
+                        {member.position}
+                      </p>
+                      <h4
+                        className={`font-bold text-[#0F172A] tracking-tight mb-4 ${
+                          index === 0 ? "text-2xl" : "text-lg"
+                        }`}
+                      >
+                        {member.name}
+                      </h4>
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#9B1C1C] transition-colors break-all"
+                      >
+                        <Mail className="h-3.5 w-3.5 shrink-0" />
+                        {member.email}
+                      </a>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="welcomeMessage"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35 }}
+              className="bg-white border border-slate-200 p-8 sm:p-10 md:p-12 max-w-4xl"
+            >
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight mb-3">
+                {t("welcomeMessage.title")}
+              </h2>
+              <div className="h-0.5 w-16 bg-[#9B1C1C] mb-8" />
+
+              <div className="space-y-5 text-slate-600 leading-relaxed">
+                <p className="text-xl font-semibold text-[#0F172A]">
+                  {t("welcomeMessage.greeting")}
+                </p>
+                <p>{t("welcomeMessage.paragraph1")}</p>
+                <p>{t("welcomeMessage.paragraph2")}</p>
+                <p>{t("welcomeMessage.paragraph3")}</p>
+                <p className="font-medium text-[#0F172A] pt-2">
+                  {t("welcomeMessage.closing")}
+                </p>
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-slate-200">
+                <p className="text-sm text-slate-500 mb-2">
+                  {t("welcomeMessage.signature")}
+                </p>
+                <p className="text-2xl font-bold text-[#0F172A]">
+                  {t("welcomeMessage.signatureName")}
+                </p>
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#9B1C1C] mt-1">
+                  {t("welcomeMessage.signatureTitle")}
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </main>
   );

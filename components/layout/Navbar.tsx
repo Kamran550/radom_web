@@ -10,12 +10,11 @@ import { cn } from "@/lib/utils";
 
 const locales = [
   { code: "en", label: "EN" },
-  { code: "tr", label: "TR" },
   { code: "ru", label: "RU" },
 ] as const;
 
 const TOP_BAR_PHONE = "+48 739 47 16 22";
-const TOP_BAR_EMAIL = "international@radomuniversity.pl";
+const TOP_BAR_EMAIL = "rectorate@radomuniversity.pl";
 
 export function NavbarDemo() {
   return <Navbar />;
@@ -70,7 +69,7 @@ function Navbar() {
       const segments = pathname.split("/");
       const pathWithoutLocale = segments.slice(2).join("/") || "";
       router.push(
-        `/${newLocale}${pathWithoutLocale ? `/${pathWithoutLocale}` : ""}`
+        `/${newLocale}${pathWithoutLocale ? `/${pathWithoutLocale}` : ""}`,
       );
       router.refresh();
     });
@@ -155,7 +154,7 @@ function Navbar() {
                       "px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors",
                       locale === lang.code
                         ? "bg-white/15 text-white"
-                        : "text-white/70 hover:text-white hover:bg-white/10"
+                        : "text-white/70 hover:text-white hover:bg-white/10",
                     )}
                   >
                     {lang.label}
@@ -184,7 +183,7 @@ function Navbar() {
                       type="button"
                       className={cn(
                         navLinkClass,
-                        aboutDropdownOpen && "text-[#9B1C1C]"
+                        aboutDropdownOpen && "text-[#9B1C1C]",
                       )}
                       aria-expanded={aboutDropdownOpen}
                     >
@@ -192,7 +191,7 @@ function Navbar() {
                       <ChevronDown
                         className={cn(
                           "h-3.5 w-3.5 transition-transform",
-                          aboutDropdownOpen && "rotate-180"
+                          aboutDropdownOpen && "rotate-180",
                         )}
                       />
                     </button>
@@ -213,7 +212,11 @@ function Navbar() {
                   </div>
 
                   {leftLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className={navLinkClass}>
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={navLinkClass}
+                    >
                       {link.label}
                     </Link>
                   ))}
@@ -247,7 +250,7 @@ function Navbar() {
                         type="button"
                         className={cn(
                           navLinkClass,
-                          programsDropdownOpen && "text-[#9B1C1C]"
+                          programsDropdownOpen && "text-[#9B1C1C]",
                         )}
                         aria-expanded={programsDropdownOpen}
                       >
@@ -255,7 +258,7 @@ function Navbar() {
                         <ChevronDown
                           className={cn(
                             "h-3.5 w-3.5 transition-transform",
-                            programsDropdownOpen && "rotate-180"
+                            programsDropdownOpen && "rotate-180",
                           )}
                         />
                       </button>
@@ -276,7 +279,11 @@ function Navbar() {
                     </div>
 
                     {rightLinks.map((link) => (
-                      <Link key={link.href} href={link.href} className={navLinkClass}>
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={navLinkClass}
+                      >
                         {link.label}
                       </Link>
                     ))}
@@ -347,7 +354,7 @@ function Navbar() {
                   <ChevronDown
                     className={cn(
                       "h-4 w-4 transition-transform",
-                      mobileAboutOpen && "rotate-180"
+                      mobileAboutOpen && "rotate-180",
                     )}
                   />
                 </button>
@@ -388,7 +395,7 @@ function Navbar() {
                   <ChevronDown
                     className={cn(
                       "h-4 w-4 transition-transform",
-                      mobileProgramsOpen && "rotate-180"
+                      mobileProgramsOpen && "rotate-180",
                     )}
                   />
                 </button>
@@ -432,7 +439,7 @@ function Navbar() {
                       "px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-colors",
                       locale === lang.code
                         ? "bg-[#0F172A] text-white"
-                        : "text-[#0F172A]/60 hover:text-[#0F172A] hover:bg-slate-100"
+                        : "text-[#0F172A]/60 hover:text-[#0F172A] hover:bg-slate-100",
                     )}
                   >
                     {lang.label}

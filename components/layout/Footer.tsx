@@ -36,7 +36,7 @@ const indexLinks = [
   { href: "/programs", key: "programs", tagKey: "programs" },
   { href: "/fees", key: "fees", tagKey: "fees" },
   { href: "/contact", key: "contact", tagKey: "contact" },
-  { href: "/e-library", key: "eLibrary", tagKey: "eLibrary" },
+  // { href: "/e-library", key: "eLibrary", tagKey: "eLibrary" },
 ] as const;
 
 function ArrowIcon() {

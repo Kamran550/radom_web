@@ -14,7 +14,6 @@ import { Globe } from "lucide-react";
 
 const languages = [
   { code: "en", label: "EN", flag: "🇬🇧" },
-  { code: "tr", label: "TR", flag: "🇹🇷" },
   { code: "ru", label: "RU", flag: "🇷🇺" },
 ] as const;
 

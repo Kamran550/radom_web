@@ -7,7 +7,7 @@ import ApplyCTA from "@/components/sections/ApplyCTA";
 
 export default function FeesPage() {
   return (
-    <main className="min-h-screen bg-white font-sans dark:bg-slate-950">
+    <main className="min-h-screen bg-white font-sans">
       <FeesHero />
       <ProgramPriceTable />
       <PaymentPlans />

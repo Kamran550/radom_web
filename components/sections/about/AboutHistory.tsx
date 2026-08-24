@@ -1,108 +1,79 @@
 "use client";
 
-import { Calendar, BookOpen, GraduationCap, Award, Users } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
-const milestoneYears = ["2020", "2021", "2022", "2023"] as const;
-const milestoneIcons = [BookOpen, GraduationCap, Award, Users] as const;
+const milestoneYears = ["2001", "2005", "2015", "2022"] as const;
 
 export default function AboutHistory() {
   const t = useTranslations("about.history");
 
   return (
-    <section className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="section-label">{t("subtitle")}</span>
-          <h2 className="heading-xl">{t("title")}</h2>
-        </div>
+    <section className="bg-[#0F172A] text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="max-w-2xl mb-14 md:mb-20"
+        >
+          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#E8B4B4] mb-4">
+            {t("subtitle")}
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1]">
+            {t("title")}
+          </h2>
+        </motion.div>
 
-        {/* Timeline — vertical list on mobile, two-column alternating on desktop */}
-        <div className="space-y-10 max-w-4xl mx-auto mb-16">
-          {milestoneYears.map((year, index) => {
-            const Icon = milestoneIcons[index];
-            const isEven = index % 2 === 0;
+        {/* Horizontal year rail on desktop; stacked on mobile */}
+        <div className="relative">
+          <div className="hidden md:block absolute top-11 left-0 right-0 h-px bg-white/15" />
 
-            return (
-              <div
+          <ol className="grid md:grid-cols-4 gap-10 md:gap-6">
+            {milestoneYears.map((year, index) => (
+              <motion.li
                 key={year}
-                className="grid md:grid-cols-[1fr_auto_1fr] gap-6 items-start"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="relative"
               >
-                {/* Left content (even) or empty (odd) */}
-                {isEven ? (
-                  <div className="bg-[#F8F7F4] rounded-xl p-6 border border-slate-200">
-                    <span className="text-xs font-bold text-[#059669] uppercase tracking-widest mb-2 block">
-                      {year}
+                <div className="flex md:flex-col gap-5 md:gap-0">
+                  <div className="shrink-0 md:mb-8">
+                    <span className="relative z-10 inline-flex items-center justify-center w-14 h-14 rounded-full border border-white/25 bg-[#0F172A] text-sm font-bold tracking-wider text-white">
+                      {String(index + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="font-bold text-[#0F172A] text-lg mb-2">
+                  </div>
+                  <div>
+                    <p className="text-3xl sm:text-4xl font-extrabold text-[#9B1C1C] tabular-nums mb-3 tracking-tight">
+                      {year}
+                    </p>
+                    <h3 className="text-lg font-bold mb-3 tracking-tight">
                       {t(`milestones.${year}.title`)}
                     </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
+                    <p className="text-sm text-slate-400 leading-relaxed">
                       {t(`milestones.${year}.description`)}
                     </p>
                   </div>
-                ) : (
-                  <div className="hidden md:block" />
-                )}
-
-                {/* Center icon */}
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-12 h-12 rounded-full bg-[#059669] flex items-center justify-center text-white shadow-md shrink-0">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  {index < milestoneYears.length - 1 && (
-                    <div className="w-px flex-1 bg-slate-200 min-h-[2rem] hidden md:block" />
-                  )}
                 </div>
-
-                {/* Right content (odd) or empty (even) */}
-                {!isEven ? (
-                  <div className="bg-[#F8F7F4] rounded-xl p-6 border border-slate-200">
-                    <span className="text-xs font-bold text-[#059669] uppercase tracking-widest mb-2 block">
-                      {year}
-                    </span>
-                    <h3 className="font-bold text-[#0F172A] text-lg mb-2">
-                      {t(`milestones.${year}.title`)}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
-                      {t(`milestones.${year}.description`)}
-                    </p>
-                  </div>
-                ) : (
-                  <div className="hidden md:block" />
-                )}
-
-                {/* Mobile fallback (shown only on small screens for odd items) */}
-                {!isEven && (
-                  <div className="md:hidden bg-[#F8F7F4] rounded-xl p-6 border border-slate-200 -mt-10">
-                    <span className="text-xs font-bold text-[#059669] uppercase tracking-widest mb-2 block">
-                      {year}
-                    </span>
-                    <h3 className="font-bold text-[#0F172A] text-lg mb-2">
-                      {t(`milestones.${year}.title`)}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
-                      {t(`milestones.${year}.description`)}
-                    </p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+              </motion.li>
+            ))}
+          </ol>
         </div>
+      </div>
 
-        {/* Campus image */}
-        <div className="rounded-2xl overflow-hidden shadow-lg">
-          <Image
-            src="/images/radom-hero-campus.jpg"
-            alt="RIU Campus"
-            width={1200}
-            height={500}
-            className="w-full h-72 md:h-[420px] object-cover"
-          />
-        </div>
+      {/* Full-bleed campus break */}
+      <div className="relative h-56 sm:h-72 md:h-96 w-full">
+        <Image
+          src="/images/radom-campus.jpg"
+          alt="RIU Campus"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-[#0F172A] via-transparent to-transparent opacity-80" />
       </div>
     </section>
   );

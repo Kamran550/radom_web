@@ -181,19 +181,19 @@
       "title": "Our History",
       "subtitle": "A journey of growth, excellence, and commitment to science and management education",
       "milestones": {
-        "2020": {
+        "2001": {
           "title": "Foundation",
           "description": "Radom İnternational University was established with a vision to create a world-class institution dedicated to science and management education and global citizenship."
         },
-        "2021": {
+        "2005": {
           "title": "First Graduates",
           "description": "We proudly celebrated our first graduating class, marking a significant milestone in our journey toward academic excellence."
         },
-        "2022": {
+        "2015": {
           "title": "International Recognition",
           "description": "RADOM received accreditation and established partnerships with leading universities worldwide, expanding our global reach."
         },
-        "2023": {
+        "2022": {
           "title": "Expansion",
           "description": "We expanded our programs and facilities, welcoming students from over 50 countries and strengthening our commitment to diversity."
         }
@@ -205,22 +205,22 @@
         "title": "Rector's Profile",
         "fullName": "Full Name",
         "position": "Position",
-        "fullNameValue": "Prof. Dr. Eraytun Koralmaz",
-        "positionValue": "Rector of Radom İnternational University (RADOM)",
-        "description": "Prof. Dr. Eraytun Koralmaz is a distinguished academic with extensive experience in the field of higher education and institutional leadership. Throughout his career, he has actively contributed to academic development, participated in national and international projects, and published in respected journals within his area of expertise. Before his appointment as Rector, Prof. Dr. Koralmaz held various academic and administrative positions, including lecturer, department head, and vice-rector. His professional journey reflects a strong commitment to academic excellence, innovation, and effective university governance.",
-        "qualifications": "As the Rector of Radom İnternational University, he envisions a modern, globally connected institution that prioritizes quality education, international partnerships, student-centered learning, and continuous development of academic staff. Prof. Dr. Koralmaz is dedicated to fostering an inclusive, transparent, and forward-thinking academic environment that prepares students for the challenges of the future.",
+        "fullNameValue": "Prof. dr hab. Marek Wierzbicki",
+        "positionValue": "Rector",
+        "description": "Prof. dr hab. Marek Wierzbicki is a distinguished academic with extensive experience in the field of higher education and institutional leadership. Throughout his career, he has actively contributed to academic development, participated in national and international projects, and published in respected journals within his area of expertise. Before his appointment as Rector, he held various academic and administrative positions, including lecturer, department head, and vice-rector. His professional journey reflects a strong commitment to academic excellence, innovation, and effective university governance.",
+        "qualifications": "As the Rector of Radom International University, he envisions a modern, globally connected institution that prioritizes quality education, international partnerships, student-centered learning, and continuous development of academic staff. Prof. dr hab. Marek Wierzbicki is dedicated to fostering an inclusive, transparent, and forward-thinking academic environment that prepares students for the challenges of the future.",
         "email": "Email",
-        "emailValue": "eraytun.koralmaz@radomuniversity.pl"
+        "emailValue": "marek.wierzbicki@radomuniversity.pl"
       },
       "welcomeMessage": {
         "title": "Welcome Message from the Rector",
         "greeting": "Dear Students, Faculty, and Staff,",
-        "paragraph1": "At Radom İnternational University, we are shaping the leaders of tomorrow — and I am proud to lead this mission. As Rector, I bring with me years of experience in higher education, research, and international collaboration. My journey has been guided by a passion for innovation, academic excellence, and student success. From teaching and leading departments to managing strategic partnerships, I’ve always believed in building a learning environment that is both forward-thinking and student-focused.",
+        "paragraph1": "At Radom International University, we are shaping the leaders of tomorrow — and I am proud to lead this mission. As Rector, I bring with me years of experience in higher education, research, and international collaboration. My journey has been guided by a passion for innovation, academic excellence, and student success. From teaching and leading departments to managing strategic partnerships, I’ve always believed in building a learning environment that is both forward-thinking and student-focused.",
         "paragraph2": "Our university is more than just a place of learning — it is a space for discovery, growth, and global connection. We aim to equip our students not just with knowledge, but with the skills and mindset to thrive in an ever-changing world.",
         "paragraph3": "Together with our faculty, staff, and partners around the world, we are committed to creating an inclusive, modern, and dynamic university experience.",
-        "closing": "Welcome to a new era of education. Welcome to Radom İnternational University.",
+        "closing": "Welcome to a new era of education. Welcome to Radom International University.",
         "signature": "Sincerely,",
-        "signatureName": "Prof. Dr. Eraytun Koralmaz",
+        "signatureName": "Prof. dr hab. Marek Wierzbicki",
         "signatureTitle": "Rector"
       },
       "tabs": {
@@ -232,24 +232,24 @@
       "title": "Administrative Units",
       "subtitle": "Meet our dedicated administrative team committed to excellence and service",
       "viceRector": {
-        "position": "Vice Rector",
-        "name": "Prof Dr. Damjan Krelov",
-        "email": "damjan.krelov@radomuniversity.pl"
+        "position": "Vice-Rector",
+        "name": "Prof. dr Tomasz Kaczmarek",
+        "email": "tomasz.kaczmarek@radomuniversity.pl"
       },
       "rectorAdvisor": {
-        "position": "Rector Advisor",
-        "name": "Prof. Dr. Elira Kostanova",
-        "email": "elira.kostanova@radomuniversity.pl"
+        "position": "Rector’s Advisor",
+        "name": "Dr hab. Piotr Zawadzki",
+        "email": "piotr.zawadzki@radomuniversity.pl"
       },
       "secretaryGeneral": {
         "position": "Secretary General",
-        "name": "Dr. Jovik Terzan",
-        "email": "jovik.terzan@radomuniversity.pl"
+        "name": "Dr Katarzyna Nowicka",
+        "email": "katarzyna.nowicka@radomuniversity.pl"
       },
       "officeDirector": {
         "position": "Director of International Office",
-        "name": "Berilay Korhan",
-        "email": "berilay.korhan@radomuniversity.pl"
+        "name": "Mgr Anna Zielińska",
+        "email": "anna.zielinska@radomuniversity.pl"
       }
     }
   },
