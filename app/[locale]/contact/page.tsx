@@ -3,10 +3,25 @@ import ContactInfo from "@/components/sections/contact/ContactInfo";
 import ContactForm from "@/components/sections/contact/ContactForm";
 import ContactMap from "@/components/sections/contact/ContactMap";
 import ContactSocial from "@/components/sections/contact/ContactSocial";
+import { PageBreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo";
 
-export default function ContactPage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return getPageMetadata(locale, "contact", "/contact");
+}
+
+export default async function ContactPage({ params }: Props) {
+  const { locale } = await params;
   return (
     <main className="min-h-screen bg-white font-sans dark:bg-slate-950">
+      <PageBreadcrumbJsonLd
+        locale={locale}
+        items={[{ navKey: "contact", path: "/contact" }]}
+      />
       <ContactHero />
       <ContactInfo />
       <div className="bg-white dark:bg-slate-950 py-20">

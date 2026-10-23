@@ -1,39 +1,42 @@
 import { MetadataRoute } from "next";
+import { routing } from "@/i18n/routing";
+import { programs } from "@/constants/programs";
+import { languageAlternates, localeUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://radomuniversity.pl";
-  const locales = ["en", "tr", "ru"];
-  const currentDate = new Date();
-
   // Əsas səhifələr
   const pages = [
     "", // Ana səhifə
     "/about", // Haqqımızda
+    "/about/rectorate", // Rektorluq
+    "/about/administrative-units", // İnzibati bölmələr
     "/programs", // Proqramlar
     "/fees", // Ödəniş
+    "/apply", // Müraciət
     "/contact", // Əlaqə
     "/news", // Xəbərlər
   ];
+
+  // Proqram detal səhifələri (constants/programs.ts)
+  const programPages = programs.map((program) => `/programs/${program.id}`);
 
   // Bütün dillər üçün URL-lər yaradaq
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
   // Hər səhifə üçün bütün dil versiyalarını əlavə et
-  pages.forEach((page) => {
-    locales.forEach((locale) => {
-      const url = `${baseUrl}/${locale}${page}`;
-
+  [...pages, ...programPages].forEach((page) => {
+    routing.locales.forEach((locale) => {
       sitemapEntries.push({
-        url,
-        lastModified: currentDate,
+        url: localeUrl(locale, page),
         changeFrequency: page === "" ? "daily" : "weekly",
-        priority: page === "" ? 1.0 : page === "/programs" ? 0.9 : 0.8,
+        priority:
+          page === ""
+            ? 1.0
+            : page === "/programs" || page.startsWith("/programs/")
+              ? 0.9
+              : 0.8,
         alternates: {
-          languages: {
-            en: `${baseUrl}/en${page}`,
-            tr: `${baseUrl}/tr${page}`,
-            ru: `${baseUrl}/ru${page}`,
-          },
+          languages: languageAlternates(page),
         },
       });
     });

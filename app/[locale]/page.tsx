@@ -5,6 +5,17 @@ import StatisticsSection from "@/components/sections/Statistics";
 // import TestimonialsSection from "@/components/sections/Testimonials";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import ApplyCTA from "@/components/sections/ApplyCTA";
+import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return getPageMetadata(locale, "home", "");
+}
 
 export default function Home() {
   return (

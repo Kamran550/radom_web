@@ -1,139 +1,173 @@
-import Script from "next/script";
+import { getTranslations } from "next-intl/server";
+import {
+  ORGANIZATION_ID,
+  SITE_LOGO,
+  SITE_NAME,
+  SITE_SHORT_NAME,
+  SITE_URL,
+  localeUrl,
+} from "@/lib/seo";
 
-// Universitet üçün Organization Schema
-export function OrganizationJsonLd() {
-  const organizationData = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": "https://radomuniversity.pl/#organization",
-    name: "Radom İnternational University",
-    alternateName: [
-      "RIU",
-      "Балканский Университет Науки и Управления",
-      "Radom İnternational University",
-    ],
-    url: "https://radomuniversity.pl",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://radomuniversity.pl/images/RADOM-logo-dark.png",
-      width: 512,
-      height: 512,
-    },
-    image: "https://radomuniversity.pl/images/RADOM-logo-dark.png",
-    description:
-      "Radom İnternational University (RADOM) - International education in Poland with bachelor's, master's and PhD programs. Quality education through science and management.",
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "RS",
-      addressLocality: "Poland",
-    },
-    sameAs: [
-      "https://www.facebook.com/radom",
-      "https://www.instagram.com/radom",
-      "https://www.linkedin.com/school/radom",
-      "https://twitter.com/radom",
-    ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "admissions",
-      availableLanguage: ["English", "Turkish", "Russian"],
-    },
-  };
-
+// JSON-LD birbaşa ilkin HTML-də render olunur (next/script əvəzinə adi <script>)
+function JsonLdScript({ id, data }: { id: string; data: object }) {
   return (
-    <Script
-      id="organization-jsonld"
+    <script
+      id={id}
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
     />
   );
 }
 
-// Universitet üçün CollegeOrUniversity Schema
+// Universitet üçün CollegeOrUniversity Schema (yalnız saytda təsdiqlənmiş məlumatlar)
 export function UniversityJsonLd() {
   const universityData = {
     "@context": "https://schema.org",
     "@type": "CollegeOrUniversity",
-    name: "Radom İnternational University",
-    alternateName: "RIU",
-    url: "https://radomuniversity.pl",
-    logo: "https://radomuniversity.pl/images/RADOM-logo-dark.png",
+    "@id": ORGANIZATION_ID,
+    name: SITE_NAME,
+    alternateName: [SITE_SHORT_NAME, "RADOM", "Radom Uluslararası Üniversitesi"],
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: SITE_LOGO,
+      width: 1024,
+      height: 1024,
+    },
+    image: SITE_LOGO,
     description:
-      "RADOM offers international bachelor's, master's and PhD programs in Poland. Fostering science and management through education and global understanding.",
+      "Radom International University (RIU) is an international university in Radom, Poland, offering bachelor's, master's and doctoral (PhD) programs.",
+    email: "info@radomuniversity.pl",
+    telephone: "+48739471622",
     address: {
       "@type": "PostalAddress",
-      addressCountry: "Poland",
+      streetAddress: "Jacka Malczewskiego 29",
+      postalCode: "26-600",
+      addressLocality: "Radom",
+      addressCountry: "PL",
     },
-    hasOfferingCatalog: {
-      "@type": "OfferingCatalog",
-      name: "Academic Programs",
-      itemListElement: [
-        {
-          "@type": "Course",
-          name: "Bachelor Programs",
-          description: "Undergraduate degree programs",
-        },
-        {
-          "@type": "Course",
-          name: "Master Programs",
-          description: "Graduate degree programs",
-        },
-        {
-          "@type": "Course",
-          name: "PhD Programs",
-          description: "Doctoral degree programs",
-        },
-      ],
-    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "admissions",
+        email: "international@radomuniversity.pl",
+        telephone: "+48739471622",
+        availableLanguage: ["English", "Turkish", "Russian"],
+      },
+    ],
   };
 
-  return (
-    <Script
-      id="university-jsonld"
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(universityData) }}
-    />
-  );
+  return <JsonLdScript id="university-jsonld" data={universityData} />;
 }
 
-// WebSite Schema - Axtarış üçün
+// WebSite Schema - sayt adı üçün
 export function WebsiteJsonLd() {
   const websiteData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://radomuniversity.pl/#website",
-    url: "https://radomuniversity.pl",
-    name: "RADOM - Radom İnternational University",
-    alternateName: ["RADOM", "Radom İnternational University"],
-    description: "Official website of Radom İnternational University",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: SITE_NAME,
+    alternateName: [SITE_SHORT_NAME, "RADOM"],
     publisher: {
-      "@id": "https://radomuniversity.pl/#organization",
+      "@id": ORGANIZATION_ID,
     },
     inLanguage: ["en", "tr", "ru"],
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: "https://radomuniversity.pl/search?q={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 
+  return <JsonLdScript id="website-jsonld" data={websiteData} />;
+}
+
+// Breadcrumb Schema - alt səhifələr üçün
+export function BreadcrumbJsonLd({
+  items,
+}: {
+  items: { name: string; url: string }[];
+}) {
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+
+  return <JsonLdScript id="breadcrumb-jsonld" data={breadcrumbData} />;
+}
+
+// Naviqasiya başlıqları ilə breadcrumb: Ana səhifə > ... (nav.* tərcümələri və ya hazır ad)
+export async function PageBreadcrumbJsonLd({
+  locale,
+  items,
+}: {
+  locale: string;
+  items: { navKey?: string; name?: string; path: string }[];
+}) {
+  const t = await getTranslations({ locale, namespace: "nav" });
   return (
-    <Script
-      id="website-jsonld"
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
+    <BreadcrumbJsonLd
+      items={[
+        { name: t("home"), url: localeUrl(locale) },
+        ...items.map((item) => ({
+          name: item.name ?? t(item.navKey ?? "home"),
+          url: localeUrl(locale, item.path),
+        })),
+      ]}
     />
   );
 }
 
-// Bütün JSON-LD-ləri birləşdirən komponent
+// Təhsil proqramı Schema - səhifədə göstərilən məlumatlarla
+export function ProgramJsonLd({
+  name,
+  description,
+  url,
+  credential,
+  duration,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  credential: string;
+  duration: string;
+}) {
+  // "4 Years" -> P4Y; aralıq dəyərlər ("3-4 Years") ISO formatına çevrilmir
+  const years = duration.match(/^(\d+)\s+Years?$/i);
+  const months = duration.match(/^(\d+)\s+Months?$/i);
+  const timeToComplete = years
+    ? `P${years[1]}Y`
+    : months
+      ? `P${months[1]}M`
+      : undefined;
+
+  const programData = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    name,
+    description,
+    url,
+    educationalCredentialAwarded: credential,
+    ...(timeToComplete && { timeToComplete }),
+    provider: {
+      "@type": "CollegeOrUniversity",
+      "@id": ORGANIZATION_ID,
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  };
+
+  return <JsonLdScript id="program-jsonld" data={programData} />;
+}
+
+// Bütün sayt üzrə JSON-LD-ləri birləşdirən komponent
 export function SeoJsonLd() {
   return (
     <>
-      <OrganizationJsonLd />
       <UniversityJsonLd />
       <WebsiteJsonLd />
     </>

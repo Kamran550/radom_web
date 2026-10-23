@@ -864,5 +864,51 @@
       "subtitle": "Önde gelen akademik kütüphaneler ve açık erişimli kaynaklarla ortaklıklarımızı keşfedin",
       "allLibraries": "Tüm Kütüphane Kaynakları"
     }
+  },
+  "metadata": {
+    "home": {
+      "title": "Radom International University (RIU) | Radom Uluslararası Üniversitesi, Polonya",
+      "description": "Radom Uluslararası Üniversitesi (RIU) resmi web sitesi, Radom, Polonya: mühendislik, bilişim, havacılık, hukuk, işletme ve sağlık alanlarında lisans, yüksek lisans ve doktora."
+    },
+    "about": {
+      "title": "Hakkımızda",
+      "description": "Radom Uluslararası Üniversitesi (RIU) hakkında bilgi edinin: misyonumuz, vizyonumuz, değerlerimiz ve tarihimiz. Radom, Polonya."
+    },
+    "rectorate": {
+      "title": "Rektörlük",
+      "description": "Radom Uluslararası Üniversitesi (RIU) Rektörlüğü ve Rektörün hoş geldiniz mesajı. Radom, Polonya."
+    },
+    "administrativeUnits": {
+      "title": "İdari Birimler",
+      "description": "Radom Uluslararası Üniversitesi (RIU) idari birimleri ve personeli. Radom, Polonya."
+    },
+    "programs": {
+      "title": "Lisans, Yüksek Lisans ve Doktora Programları",
+      "description": "Radom Uluslararası Üniversitesi programları: mühendislik, bilgisayar bilimleri, havacılık, hukuk, işletme ve sağlık alanlarında lisans, yüksek lisans ve doktora. Radom, Polonya."
+    },
+    "programDetail": {
+      "title": "{title} ({degree})",
+      "description": "Radom Uluslararası Üniversitesi'nde {title} ({degree}, {duration}), Radom, Polonya. {description}"
+    },
+    "fees": {
+      "title": "Öğrenim Ücretleri ve Burslar",
+      "description": "Radom Uluslararası Üniversitesi (RIU) lisans, yüksek lisans ve doktora programları için öğrenim ücretleri, ödeme planları ve burslar."
+    },
+    "apply": {
+      "title": "Başvuru",
+      "description": "Radom Uluslararası Üniversitesi'ne (RIU) online başvurun: derecenizi, fakültenizi ve programınızı seçin ve başvurunuzu bugün başlatın."
+    },
+    "contact": {
+      "title": "İletişim",
+      "description": "Radom Uluslararası Üniversitesi (RIU) iletişim: Jacka Malczewskiego 29, 26-600 Radom, Polonya. Tel. +48 739 471 622, info@radomuniversity.pl."
+    },
+    "news": {
+      "title": "Haberler",
+      "description": "Radom Uluslararası Üniversitesi'nden (RIU) en son haberler, etkinlikler ve duyurular. Radom, Polonya."
+    },
+    "eLibrary": {
+      "title": "E-Kütüphane",
+      "description": "Radom Uluslararası Üniversitesi (RIU) e-kütüphanesi: dijital kaynaklar, akademik veritabanları ve açık erişimli kütüphaneler."
+    }
   }
 }

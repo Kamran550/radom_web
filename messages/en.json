@@ -51,7 +51,7 @@
   },
   "aboutPreview": {
     "title": "Welcome to RADOM",
-    "description": "Radom İnternational University stands as a beacon of academic excellence, combining rigorous scientific education with innovative management practices. Our institution empowers students to become forward-thinking professionals ready to tackle global challenges.",
+    "description": "Radom International University stands as a beacon of academic excellence, combining rigorous scientific education with innovative management practices. Our institution empowers students to become forward-thinking professionals ready to tackle global challenges.",
     "button": "Explore More",
     "badge": "Academic Excellence",
     "yearsExperience": "25+ Years of Experience",
@@ -122,7 +122,7 @@
   },
   "about": {
     "hero": {
-      "title": "About Radom İnternational University",
+      "title": "About Radom International University",
       "subtitle": "Empowering minds, building science and management, and shaping tomorrow's leaders through excellence in education and global collaboration."
     },
     "missionVision": {
@@ -183,7 +183,7 @@
       "milestones": {
         "2001": {
           "title": "Foundation",
-          "description": "Radom İnternational University was established with a vision to create a world-class institution dedicated to science and management education and global citizenship."
+          "description": "Radom International University was established with a vision to create a world-class institution dedicated to science and management education and global citizenship."
         },
         "2005": {
           "title": "First Graduates",
@@ -525,7 +525,7 @@
   "news": {
     "hero": {
       "title": "News & Updates",
-      "subtitle": "Stay informed about the latest news, events, announcements, and achievements at Radom İnternational University.",
+      "subtitle": "Stay informed about the latest news, events, announcements, and achievements at Radom International University.",
       "latestUpdates": "Latest Updates",
       "stayInformed": "Stay Informed"
     },
@@ -633,7 +633,7 @@
     }
   },
   "footer": {
-    "description": "Radom İnternational University — An international university combining excellence in science and management education.",
+    "description": "Radom International University — An international university combining excellence in science and management education.",
     "eyebrow": "Admissions 2026/27: Open",
     "headline": "Combining excellence in science and management education.",
     "applyNow": "Apply Now",
@@ -678,7 +678,7 @@
       "studentLife": "Student Life",
       "admissions": "Admissions"
     },
-    "copyright": "© {year} Radom İnternational University. All rights reserved.",
+    "copyright": "© {year} Radom International University. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
   },
@@ -863,6 +863,52 @@
       "title": "Our Library Partners",
       "subtitle": "Explore our partnerships with leading academic libraries and open-access resources",
       "allLibraries": "All Library Resources"
+    }
+  },
+  "metadata": {
+    "home": {
+      "title": "Radom International University (RIU) | Study in Radom, Poland",
+      "description": "Official website of Radom International University (RIU) in Radom, Poland: bachelor's, master's and PhD programs in engineering, IT, aviation, law, business and health."
+    },
+    "about": {
+      "title": "About the University",
+      "description": "Learn about Radom International University (RIU) in Radom, Poland: our mission, vision, values and history in science and management education."
+    },
+    "rectorate": {
+      "title": "Rectorate",
+      "description": "Meet the Rectorate of Radom International University (RIU) in Radom, Poland and read the Rector's welcome message."
+    },
+    "administrativeUnits": {
+      "title": "Administrative Units",
+      "description": "Administrative units and staff of Radom International University (RIU) in Radom, Poland, supporting students, applicants and academic staff."
+    },
+    "programs": {
+      "title": "Bachelor's, Master's & PhD Programs",
+      "description": "Explore study programs at Radom International University in Radom, Poland: bachelor's, master's and doctoral degrees in engineering, computer science, aviation, law, business and health."
+    },
+    "programDetail": {
+      "title": "{title} ({degree})",
+      "description": "{title} ({degree}, {duration}) at Radom International University, Radom, Poland. {description}"
+    },
+    "fees": {
+      "title": "Tuition Fees & Scholarships",
+      "description": "Tuition fees, payment plans and scholarships at Radom International University (RIU) in Radom, Poland for bachelor's, master's and doctoral programs."
+    },
+    "apply": {
+      "title": "Apply – Admissions",
+      "description": "Apply online to Radom International University (RIU) in Radom, Poland. Choose your degree, faculty and program and start your application today."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Contact Radom International University (RIU): Jacka Malczewskiego 29, 26-600 Radom, Poland. Phone +48 739 471 622, email info@radomuniversity.pl."
+    },
+    "news": {
+      "title": "News & Updates",
+      "description": "Latest news, events and announcements from Radom International University (RIU) in Radom, Poland."
+    },
+    "eLibrary": {
+      "title": "E-Library",
+      "description": "Access digital resources, academic databases and open-access libraries through the Radom International University (RIU) e-library."
     }
   }
 }

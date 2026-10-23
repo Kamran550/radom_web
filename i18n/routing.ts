@@ -7,6 +7,10 @@ export const routing = defineRouting({
 
   // Used when no locale matches
   defaultLocale: "en",
+
+  // hreflang HTML <head>-də hər səhifənin metadata-sı ilə verilir (lib/seo.ts);
+  // middleware-in Link header-i prefikssiz x-default URL-i göstərirdi
+  alternateLinks: false,
 });
 
 // Lightweight wrappers around Next.js' navigation APIs
