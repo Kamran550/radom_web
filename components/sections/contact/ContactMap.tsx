@@ -13,7 +13,7 @@ export default function ContactMap() {
     "https://maps.google.com/maps?q=Jacka+Malczewskiego+29,+26-600,+Radom,+Poland&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
   const address = {
-    full: "Jacka Malczewskiego 29, 26-600 Radom, Poland",
+    full: "ul. Biznesowa, 26-612 Radom, Poland",
     googleMapsUrl:
       "https://www.google.com/maps/place/Jacka+Malczewskiego+29,+26-600+Radom,+Poland",
   };

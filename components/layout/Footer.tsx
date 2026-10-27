@@ -10,7 +10,7 @@ import "./footer.css"
 const contactInfo = {
   phones: ["+48 739 47 16 22"],
   emails: ["info@radomuniversity.pl", "international@radomuniversity.pl"],
-  address: ["Jacka Malczewskiego 29, 26-600 Radom, Polonya"],
+  address: ["ul. Biznesowa, 26-612 Radom, Polonya"],
 };
 
 const socialLinks = [

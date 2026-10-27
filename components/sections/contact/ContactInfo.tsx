@@ -15,7 +15,7 @@ const contactInfo = {
     support: "rectorate@radomuniversity.pl",
   },
   address: {
-    city: "Jacka Malczewskiego 29, 26-600 Radom, Polonya",
+    city: "ul. Biznesowa, 26-612 Radom, Poland",
     country: "Radom",
   },
   hours: {
